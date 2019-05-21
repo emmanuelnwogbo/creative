@@ -75,6 +75,13 @@ class Header extends Component {
   renderBtns = () => {
     const { btnLabels } = this.state;
     return btnLabels.map(item => {
+      if (item === 'create') {
+        return <Btn style={{
+          height: '4.5rem',
+          background: '#fff',
+          color: 'rgba(30, 55, 153, 0.8)'
+        }} label={item} key={item}/>
+      }
       return <Btn style={{
         height: '4.5rem'
       }} label={item} key={item}/>

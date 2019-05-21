@@ -1,4 +1,8 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background: #fff;
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   display: flex;
@@ -8,14 +12,12 @@
   font-weight: 700;
   font-size: 1.6rem;
   color: rgba(30, 55, 153,.8);
+  z-index: 2000;
 
   &--name {
     text-transform: uppercase;
     margin-right: 3.5rem;
     font-weight: 900;
-    background: linear-gradient(to right, #302B63, #0F0C29);
-    -webkit-background-clip: text;
-    background-clip: text;
   }
 
   &__search {
@@ -31,6 +33,7 @@
       font-size: 2.1rem;
       padding: 1rem 5rem;
       border-left: 0.5px solid rgba(30, 39, 46, 0.8);
+      transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
 
       &:focus {
         background: rgba(30, 55, 153,.4);

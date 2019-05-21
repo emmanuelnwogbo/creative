@@ -1,0 +1,25 @@
+.container {
+  padding: 4rem 17rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(26.5rem, 1fr));
+  grid-gap: 2rem;
+  align-items: start;
+  margin-top: 6rem;
+
+  &__header {
+    grid-column: 1 / -1;
+    background: linear-gradient(to right, #302B63, #0F0C29);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    &--label-main {
+      font-size: 2.5rem;
+      font-weight: 900;
+    }
+
+    &--label-sub {
+      font-size: 1.8rem;
+    }
+  }
+}
