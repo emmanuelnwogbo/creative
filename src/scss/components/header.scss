@@ -1,0 +1,111 @@
+.header {
+  background: #fff;
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  padding: 0 5.5rem;
+  align-items: center;
+  height: 6.5rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: rgba(30, 55, 153,.8);
+
+  &--name {
+    text-transform: uppercase;
+    margin-right: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(to right, #302B63, #0F0C29);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  &__search {
+    position: relative;
+    height: 100%;
+    width: 32%;
+
+    &--input { 
+      height: 100%;
+      width: 100%;
+      outline: none;
+      border: none;
+      font-size: 2.1rem;
+      padding: 1rem 5rem;
+      border-left: 0.5px solid rgba(30, 39, 46, 0.8);
+
+      &:focus {
+        background: rgba(30, 55, 153,.4);
+      }
+
+      &::-webkit-input-placeholder {
+        color: rgba(30, 39, 46, 0.5);
+        transform: translateX(.5rem);
+        font-weight: 500;
+      }
+    }
+
+    &--icon {
+      height: 1.9rem;
+      width: 1.9rem;
+      position: absolute;
+      top: 37%;
+      left: 5%;
+      fill: rgba(30, 39, 46, 0.5);
+    }
+  }
+
+  &__menu {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(30, 39, 46,.8);
+
+    &--cursor {
+      position: absolute;
+      background: rgba(30, 55, 153,.8);
+      height: .3rem;
+      border-radius: 3rem;
+      width: 16%;
+      bottom: 0;
+      left: 0;
+      transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: inline-block;
+    }
+
+    &--item {
+      display: inline-block;
+      cursor: pointer;
+      padding: 2rem;
+      margin: 0 .2rem;
+      transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+      &:hover {
+        color: rgba(30, 55, 153,.8)
+      }
+    }
+
+    &--currentitem {
+      color: rgba(30, 55, 153,.8)
+    }
+  }
+
+  &__svgs {
+    transform: translateX(17rem) translateY(0.5rem);
+
+    &--body {
+      position: relative;
+      display: inline-block;
+      padding: 1.5rem;
+      cursor: pointer;
+    }
+
+    &--svg {
+      height: 3rem;
+      width: 3rem;
+      fill: rgba(30, 55, 153,.8)
+    }
+  }
+
+  &--btns {
+    transform: translateX(22rem);
+  }
+}

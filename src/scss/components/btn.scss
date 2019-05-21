@@ -1,0 +1,19 @@
+.btn,
+.btn:link,
+.btn:visited {
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  outline: none;
+  box-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  color: #fff;
+  background: rgba(30, 55, 153, 0.8);
+  margin: 0 1.5rem;
+  border-radius: 2px;
+  font-weight: 700;
+  border: 1px solid rgba(30, 55, 153, 0.8);
+  cursor: pointer;
+}
