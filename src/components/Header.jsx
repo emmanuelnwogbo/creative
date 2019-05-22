@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import '../scss/components/header.scss';
+import { connect } from 'react-redux';
 
+import '../scss/components/header.scss';
 import Btn from './Button';
+
+import { changeMenu } from '../actions';
 
 class Header extends Component {
   constructor(props) {
@@ -15,8 +18,9 @@ class Header extends Component {
   }
 
   moveMenuCursor = (e) => {
-    const { menuCursorPosition } = this.state;
     const menuLabel = e.target.childNodes[0].innerText || e.target.innerText;
+    const { changeMenu } = this.props;
+    changeMenu(menuLabel);
     switch (menuLabel) {
       case 'Videos':
         this.setState({ 
@@ -85,6 +89,10 @@ class Header extends Component {
     })
   }
 
+  componentDidMount() {
+    //console.log(this.props)
+  }
+
   render() {
     const { menuCursorPosition } = this.state;
     return (
@@ -120,4 +128,11 @@ class Header extends Component {
   }
 }
 
-export default Header;
+function mapStateToProps(state) {
+  const { menu } = state;
+  return {
+    menu
+  }
+}
+
+export default connect(mapStateToProps, { changeMenu })(Header);

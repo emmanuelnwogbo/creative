@@ -1,6 +1,7 @@
 import React, { Component, lazy, Suspense } from 'react';
-import '../scss/components/container.scss'
+import { connect } from 'react-redux';
 
+import '../scss/components/container.scss'
 import rainbowGenerator from '../helpers/rainbow';
 
 const Card = lazy(() => import('./Card'));
@@ -44,6 +45,7 @@ class Container extends Component {
 
   render() {
     const { headerLabel } = this.state;
+    console.log(this.props)
     return (
       <div className="container">
         <div className="container__header">
@@ -58,4 +60,11 @@ class Container extends Component {
   }
 }
 
-export default Container;
+function mapStateToProps(state) {
+  const { menu } = state;
+  return {
+    menu
+  }
+}
+
+export default connect(mapStateToProps, {  })(Container);

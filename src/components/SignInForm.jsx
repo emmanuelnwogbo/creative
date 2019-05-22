@@ -48,15 +48,10 @@ class SignInForm extends Component {
           </figure>
           <div className="signinform__content--signin">
             <h2 className="signinform__content--h2">Create an account or login</h2>
-            <div className="signinform__input">
-              <input className="signinform__input--email" placeholder="Enter your email address"/>
-              <Button label={'SIGN UP / SIGN IN'} style={{
-                margin: '0',
-                borderRadius: '0% 3rem 3rem 0%',
-                fontSize: '1.4rem',
-                height: '5rem'
-              }}/>
-            </div>
+            <form className="signinform__input">
+              <input className="signinform__input--email" type="email" name="email" id="email" placeholder="Enter your email address" required></input>
+              <input className="signinform__input--btn" type="button" value="SIGN UP / SIGN IN"></input>
+            </form>
             <div className="signinform--btns">
               {this.renderLoginBtns()}
             </div>
