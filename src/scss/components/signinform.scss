@@ -9,6 +9,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: rgba(87, 101, 116,.9);
+  transition: all .1s cubic-bezier(0.165, 0.84, 0.44, 1);
 
   &__content {
     position: relative;
@@ -16,6 +18,25 @@
     width: 80%;
     display: flex;
     background: #fff;
+  }
+
+  &__close {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    height: 5rem;
+    width: 5rem;
+    padding: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(87, 101, 116,.4);
+
+    &--icon {
+      height: 3rem;
+      width: 3rem;
+      fill: rgba(87, 101, 116, 0.9);
+      transform: translateX(-.9rem) translateY(-.9rem);
+    }
   }
 
   &__fig {
@@ -39,7 +60,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    //background: green;
   }
 
   &__content--h2 {
@@ -47,6 +67,7 @@
     font-weight: 900;
     font-size: 3rem;
     width: 100%;
+    margin: 4rem 0;
   }
 
   &__input {
@@ -70,5 +91,13 @@
   &--btns {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &--h3 {
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    color: rgba(87, 101, 116,.6)
   }
 }

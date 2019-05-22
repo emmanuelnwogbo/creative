@@ -18,3 +18,47 @@
   height: 4.5rem;
   cursor: pointer;
 }
+
+.btn {
+  &__header {
+
+    &--create {
+      background: #fff;
+      color: rgba(30, 55, 153, 0.8)
+    }
+  }
+
+  &__signup {
+    margin: 0;
+    border-radius: 0% 3rem 3rem 0%;
+    font-size: 1.4rem;
+    height: 5rem;
+  }
+
+  &__social {
+    height: 5.5rem;
+    min-width: 14rem;
+    text-transform: none;
+    font-size: 2rem;
+    margin: 1rem 2rem;
+    border-radius: .5rem;
+
+    &--icon {
+      height: 2.8rem;
+      width: 2.8rem;
+      transform: translateY(.4rem) translateX(-1.4rem);
+      fill: #fff;
+    }
+
+    &--linkedIn {
+      background: #0077B5;  
+      border: 1px solid #0077B5;
+    }
+
+    &--google {
+      color: #000000;
+      background: #fff;
+      border: 1px solid rgba(34, 47, 62,.5);
+    }
+  }
+}

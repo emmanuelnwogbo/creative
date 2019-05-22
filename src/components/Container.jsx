@@ -45,7 +45,7 @@ class Container extends Component {
 
   render() {
     const { headerLabel } = this.state;
-    console.log(this.props)
+    //console.log(this.props)
     return (
       <div className="container">
         <div className="container__header">

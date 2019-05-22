@@ -13,7 +13,7 @@ class Header extends Component {
       menuCursorPosition: '0',
       currentMenuItem: 'All',
       menuItems: ['All', 'Videos', 'Gifs', 'Tracks', 'Profiles'],
-      btnLabels: ['create', 'sign in']
+      btnLabels: ['create', 'sign in'],
     }
   }
 
@@ -80,12 +80,9 @@ class Header extends Component {
     const { btnLabels } = this.state;
     return btnLabels.map(item => {
       if (item === 'create') {
-        return <Btn style={{
-          background: '#fff',
-          color: 'rgba(30, 55, 153, 0.8)'
-        }} label={item} key={item}/>
+        return <Btn classLabels={'btn btn__header--create'} label={item} key={item}/>
       }
-      return <Btn style={{}} label={item} key={item}/>
+      return <Btn classLabels={'btn btn__header'} label={item} key={item}/>
     })
   }
 
