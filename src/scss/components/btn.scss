@@ -14,17 +14,21 @@
   margin: 0 1.5rem;
   border-radius: 2px;
   font-weight: 700;
-  border: 1px solid rgba(30, 55, 153, 0.8);
+  //border: 1px solid #EC008C;
   height: 4.5rem;
   cursor: pointer;
 }
 
 .btn {
   &__header {
+    background: linear-gradient(to right bottom, #EC008C, #FC6767);
 
     &--create {
-      background: #fff;
-      color: rgba(30, 55, 153, 0.8)
+      background: linear-gradient(to right bottom, #EC008C, #FC6767);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      border: 1px solid #EC008C;
     }
   }
 
@@ -33,6 +37,7 @@
     border-radius: 0% 3rem 3rem 0%;
     font-size: 1.4rem;
     height: 5rem;
+    border: 1px solid rgba(30, 55, 153, 0.8);
   }
 
   &__social {
