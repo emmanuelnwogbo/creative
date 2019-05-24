@@ -18,6 +18,23 @@
     width: 80%;
     display: flex;
     background: #fff;
+    overflow-y: scroll;
+
+    @media only screen and (max-width: 75em) {
+      width: 95%;
+      height: 98%;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media only screen and (max-width: 64em) {
+      height: 82%;
+    }
+
+    @media only screen and (max-width: 50em) {
+      height: 98%;
+      width: 95%;
+    }
   }
 
   &__close {
@@ -30,6 +47,11 @@
     border-radius: 50%;
     cursor: pointer;
     background: rgba(87, 101, 116,.4);
+    z-index: 3;
+
+    @media only screen and (max-width: 63.75em) {
+      background: rgba(87, 101, 116,.7);
+    }
 
     &--icon {
       height: 3rem;
@@ -46,6 +68,15 @@
     overflow: hidden;
     border-radius: .3rem .3rem 0% 0%;
 
+    @media only screen and (max-width: 75em) {
+      width: 100%;
+      height: 40%;
+    }
+
+    @media only screen and (max-width: 37.5em) {
+      display: none
+    }
+
     &--img {
       width: 100%;
       height: 100%;
@@ -60,6 +91,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @media only screen and (max-width: 75em) {
+      width: 100%;
+      height: 55%;
+    }
+
+    @media only screen and (max-width: 37.5em) {
+      width: 100%;
+      height: 100%;
+      padding: .5rem 1.2rem;
+      justify-content: center;
+    }
   }
 
   &__content--h2 {
@@ -68,6 +111,15 @@
     font-size: 3rem;
     width: 100%;
     margin: 4rem 0;
+
+    @media only screen and (max-width: 48em) {
+      margin: 1rem 0;
+    }
+
+    @media only screen and (max-width: 30em) {
+      margin: .5rem 0;
+      font-size: 1.9rem;
+    }
   }
 
   &__input {
@@ -75,6 +127,13 @@
     display: flex;
     justify-content: center;
     margin: 1.5rem 0;
+
+    @media only screen and (max-width: 50em) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
 
     &--email {
       height: 5rem;
@@ -85,6 +144,15 @@
       font-size: 2.1rem;
       padding: 1rem 2rem;
       transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+      @media only screen and (max-width: 50em) {
+        width: 100%;
+        border-radius: 3rem;
+        margin: 1rem .6rem;
+        height: 5.5rem;
+        padding: .7rem;
+        border: 0.3rem solid rgba(30, 39, 46, 0.8);
+      }
     }
   }
 
@@ -92,12 +160,24 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
+    @media only screen and (max-width: 30em) {
+      width: 100%;
+    }
   }
 
   &--h3 {
     width: 100%;
-    text-align: center;
+    text-align: start;
     font-size: 1.8rem;
-    color: rgba(87, 101, 116,.6)
+    color: rgba(87, 101, 116,.6);
+
+    &-signin {
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 37.5em) {
+      text-align: center;
+    }
   }
 }

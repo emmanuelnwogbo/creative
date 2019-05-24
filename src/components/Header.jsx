@@ -86,6 +86,17 @@ class Header extends Component {
     })
   }
 
+  openCloseSearch1200px = () => {
+    const openCloseSearch1200px = document.getElementById('header__checkbox--search-1200pxscreen');
+    if (openCloseSearch1200px.checked) {
+      return openCloseSearch1200px.checked = false
+    }
+
+    if (!openCloseSearch1200px.checked) {
+      return openCloseSearch1200px.checked = true
+    }
+  }
+
   componentDidMount() {
     //console.log(this.props)
   }
@@ -94,11 +105,22 @@ class Header extends Component {
     const { menuCursorPosition } = this.state;
     return (
       <div className="header">
+        <input id="header__checkbox--search-1200pxscreen" className="header__checkbox--search-1200pxscreen" type="checkbox" />
         <div className="header--name">
           <p>HomeBoard</p>
         </div>
+        <div className="header__search--1200pxscreen" onClick={this.openCloseSearch1200px}>
+          <svg  className="header__search--icon header__search--icon-1200pxscreen">
+            <use xlinkHref="./img/sprite.svg#icon-search" />
+          </svg>
+        </div>
         <div className="header__search">
           <input className="header__search--input" placeholder="Search"/>
+          <div className="header__search--closeicon-parent" onClick={this.openCloseSearch1200px}>
+            <svg  className="header__search--closeicon">
+              <use xlinkHref="./img/sprite.svg#icon-x" />
+            </svg>
+          </div>
           <svg  className="header__search--icon">
             <use xlinkHref="./img/sprite.svg#icon-search" />
           </svg>

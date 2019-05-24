@@ -33,8 +33,8 @@ class SignInForm extends Component {
     this.state = {
       loginOptions: ['Google', 'LinkedIn'],
       style: {
-        zIndex: '-1',
-        opacity: '0'
+        zIndex: '5000',//'-1',
+        opacity: '1'//'0'
       }
     }
   }
@@ -86,13 +86,13 @@ class SignInForm extends Component {
           </figure>
           <div className="signinform__content--signin">
             <h2 className="signinform__content--h2">Create an account or login</h2>
-            <h3 className="signinform--h3" style={{textAlign: 'start'}}>Sign in with a secure link</h3>
+            <h3 className="signinform--h3">Sign in with a secure link</h3>
             <form className="signinform__input">
               <input className="signinform__input--email" type="email" name="email" id="email" placeholder="Enter your email address" required></input>
               <input className="btn btn__signup" type="button" value="SIGN UP / SIGN IN"></input>
             </form>
             <div className="signinform--btns">
-              <h3 className="signinform--h3">Or sign in with:</h3>
+              <h3 className="signinform--h3 signinform--h3-signin">Or sign in with:</h3>
               {this.renderLoginBtns()}
             </div>
           </div>

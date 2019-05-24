@@ -6,15 +6,42 @@
   grid-gap: 2rem;
   align-items: start;
   margin-top: 6rem;
+  justify-content: center;
 
-  @media only screen and (max-width: 81.938em) {
+  @media only screen and (max-width: 82em) {
     padding: 4rem 8rem;
+  }
+
+  @media only screen and (max-width: 69.75em) {
+    padding: 4rem 4rem;
   }
 
   @media only screen and (max-width: 69.063em) {
     padding: 4rem 2rem;
   }
 
+  @media only screen and (max-width: 56.375em) {
+    padding: 4rem 0rem;
+    grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
+  }
+
+  @media only screen and (max-width: 50em) {
+    padding: 4rem 6rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 4rem 2rem;
+  }
+
+  @media only screen and (max-width: 30em) {
+    padding: 4rem 3rem;
+  }
+
+  @media only screen and (max-width: 25.875em) {
+    padding: 4rem 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+  }
+  
   &__header {
     grid-column: 1 / -1;
     color: transparent;

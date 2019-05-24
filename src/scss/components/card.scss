@@ -20,6 +20,10 @@
     border-radius: .3rem .3rem 0% 0%;
     height: 20rem;
 
+    @media only screen and (max-width: 64em) {
+      height: 26rem;
+    }
+
     &-overlay {
       position: absolute;
       width: 100%;
@@ -43,11 +47,17 @@
     align-content: center;
     transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
     transform: translateX(100%);
+    justify-content: space-evenly;
+
+    @media only screen and (max-width: 62.25em) {
+      transform: translateX(0);
+      padding: 2rem .5rem;
+    }
+
 
     &-svg {
       height: 3rem;
       width: 3rem;
-      margin-top: 1.5rem;
       fill: #302B63;
       cursor: pointer;
       transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -75,17 +85,62 @@
       color: rgba(30, 39, 46, 0.8);
       font-weight: 700;
       font-size: 1.1rem;
+
+      @media only screen and (max-width: 50em) {
+        font-size: 1.4rem;
+      }
+
+      @media only screen and (max-width: 37.5em) {
+        font-size: 1.5rem;
+      }
     }
 
     &--icons {
       position: relative;
       padding: .5rem;
       display: inline-block;
-      transform: translateX(4.5rem) translateY(-6rem);
+      transform: translate(2rem, -7rem);
       background: #fff;
       z-index: 2000;
       border-radius: .8rem;
       box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+      font-size: 1.2rem;
+
+      @media only screen and (max-width: 115em) {
+        transform: translate(0rem, -7rem);
+      }
+
+      @media only screen and (max-width: 112.75em) {
+        transform: translate(0rem, -8.5rem);
+      }
+
+      @media only screen and (max-width: 101.75em) {
+        transform: translate(5rem, -6.5rem);
+      }
+
+      @media only screen and (max-width: 100.75em) {
+        transform: translate(1rem, -6.5rem);
+      }
+
+      @media only screen and (max-width: 91.25em) {
+        transform: translate(-3rem, -6.5rem);
+      }
+
+      @media only screen and (max-width: 90em) {
+        display: block;
+        text-align: center;
+        width: 86%;
+        transform: translateY(-8.5rem);
+        margin: auto;
+      }
+
+      @media only screen and (max-width: 83.75em) {
+        display: block;
+        text-align: center;
+        width: 100%;
+        transform: translateY(-8.5rem);
+        margin: auto;
+      }
 
       &-body {
         display: inline-block;
@@ -101,8 +156,8 @@
       }
 
       &-svg {
-        height: 1rem;
-        width: 1rem;
+        height: 1.2rem;
+        width: 1.2rem;
         fill: rgba(30, 39, 46, 0.4);
         cursor: pointer;    
         transform: translateY(.1rem);

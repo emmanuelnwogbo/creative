@@ -24,7 +24,7 @@ export const btnClickHandler = (userAccountStat, signUp=true) => dispatch => {
     dispatch({
       type: SIGN_IN_FORM_VISIBLE,
       payload: {
-        zIndex: '2000',
+        zIndex: '5000',
         opacity: '1'
       }
     })

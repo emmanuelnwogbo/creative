@@ -1,12 +1,123 @@
 .header__mobile {
   position: fixed;
   width: 100%;
-  padding: 2rem;
+  padding: 0rem 2rem;
   top: 0;
   left: 0;
-  background: red;
+  background: #fff;
+  //background: red;
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   z-index: 3000;
   display: flex;
-  justify-content: space-evenly;
+  font-size: 1.6rem;
+  align-items: center;
+  //justify-content: space-evenly;
+
+  @media only screen and (max-width: 20em) {
+    padding: 1.4rem 2rem;
+  }
+
+  &--burger {
+    cursor: pointer;
+
+    & span {
+      border-radius: 10px;
+      background: #EC008C;
+    }
+
+    & span:nth-child(1) {
+      width: 3.5rem;
+      height: .5rem;
+      display: block;
+      margin-bottom: .2rem;
+    }
+
+    & span:nth-child(2) {
+      width: 3rem;
+      height: .6rem;
+      display: block;
+      margin-bottom: .2rem;
+    }
+
+    & span:nth-child(3) {
+      width: 2.5rem;
+      height: .5rem;
+      display: block;
+      margin-bottom: .2rem;
+    }
+
+    & span:nth-child(4) {
+      width: 3.5rem;
+      height: .5rem;
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  &--icon-parent {
+    transform: translateY(.2rem);
+    padding: 0 1rem;
+    cursor: pointer;
+  }
+
+  &--icon-search {
+    //width: 1.9rem;
+    //height: 1.9rem;
+    cursor: pointer;
+    fill: rgba(30, 55, 153,.8);
+  }
+
+  &--search {
+    position: absolute;
+    width: 100%;
+    height: 130%;
+    top: 10%;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    padding: 1.5rem;
+    transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &-input {
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      padding: 1rem;
+      border: 0.5px solid rgba(30, 39, 46, 0.8);
+      transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+      font-size: 2.1rem;
+      outline: none;
+      padding-right: 6rem;
+
+      &:focus {
+        background: #fff
+      }
+
+      &::-webkit-input-placeholder {
+        color: rgba(30, 39, 46, 0.5);
+        font-weight: 500;
+      }
+    }
+
+    &-iconparent {
+      position: absolute;
+      right: 2%;
+      top: 22%;
+      height: 5rem;
+      width: 5rem;
+      background: rgba(44, 62, 80,.4);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    &-closeicon {
+      height: 2.3rem;
+      width: 2.3rem;
+      fill: rgba(44, 62, 80,.6);
+      cursor: pointer;
+    }
+  }
 }
