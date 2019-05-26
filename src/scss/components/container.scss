@@ -8,12 +8,14 @@
   margin-top: 6rem;
   justify-content: center;
 
-  @media only screen and (max-width: 82em) {
-    padding: 4rem 8rem;
+  //107.875
+
+  @media only screen and (max-width: 107.875em) {
+    padding: 4rem 9rem;
   }
 
-  @media only screen and (max-width: 69.75em) {
-    padding: 4rem 4rem;
+  @media only screen and (max-width: 92.5em) {
+    padding: 4rem;
   }
 
   @media only screen and (max-width: 69.063em) {

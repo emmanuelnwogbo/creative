@@ -12,7 +12,7 @@ class Header extends Component {
     this.state = { 
       menuCursorPosition: '0',
       currentMenuItem: 'All',
-      menuItems: ['All', 'Videos', 'Gifs', 'Tracks', 'Profiles'],
+      menuItems: ['Home', 'Tracks', 'Profiles', 'Projects'],
       btnLabels: ['create', 'sign in'],
     }
   }
@@ -22,27 +22,21 @@ class Header extends Component {
     const { changeMenu } = this.props;
     changeMenu(menuLabel);
     switch (menuLabel) {
-      case 'Videos':
-        this.setState({ 
-          menuCursorPosition: 'translateX(7.5rem)',
-          currentMenuItem: menuLabel
-        });
-        break;
-      case 'Gifs':
-        this.setState({ 
-          menuCursorPosition: 'translateX(16rem)',
-          currentMenuItem: menuLabel
-        });
-        break;
       case 'Tracks':
         this.setState({ 
-          menuCursorPosition: 'translateX(24rem)',
-          currentMenuItem: menuLabel 
+          menuCursorPosition: 'translateX(173%)',
+          currentMenuItem: menuLabel
         });
         break;
       case 'Profiles':
         this.setState({ 
-          menuCursorPosition: 'translateX(33.5rem)',
+          menuCursorPosition: 'translateX(346%)',
+          currentMenuItem: menuLabel 
+        });
+        break;
+      case 'Projects':
+        this.setState({ 
+          menuCursorPosition: 'translateX(535%)',
           currentMenuItem: menuLabel 
         });
         break;

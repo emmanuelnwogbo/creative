@@ -22,7 +22,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    if (window.matchMedia('(max-width: 1024px)').matches) {
+    if (window.matchMedia('(max-width: 1049px)').matches) {
       import('./Header_Mobile').then(HeaderMobile => {
         this.setState({ MobileHeader: HeaderMobile.default });
       })

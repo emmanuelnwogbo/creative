@@ -10,6 +10,9 @@ class Card extends Component {
     const { overlayStyle } = this.props;
     return (
       <div className="card">
+        <div className="card--type">
+          <p>video</p>
+        </div>
         <figure className="card--fig">
           <div className="card--sidenav">
             <svg  className="card--sidenav-svg">
@@ -24,12 +27,17 @@ class Card extends Component {
             background: `${overlayStyle}`,
             opacity: '.3'
           }}></div>
-          <img className="card--img" src="https://res.cloudinary.com/dxlhzerlq/image/upload/v1545772392/397004_lana-del-rey-radio_1920x1080_h_djxvda.jpg"/>
+          <img className="card--img" src="./img/test3.jpg"/>
         </figure>
         <div className="card__details">
           <span className="card__details--title">{'Summer of Bliss'}</span>
-          <span className="card__details--name">{'Mumen Rider'}</span>
-          <span className="card__details--icons">
+          <div className="card__details--poster">
+            <figure className="card__details--poster-fig">
+              <img className="card__details--poster-img" src="./img/test2.jpg"/>
+            </figure>
+            <span className="card__details--poster-name">{'Mumen Rider'}</span>
+          </div>
+          <div className="card__details--icons">
             <span className="card__details--icons-body">
               <span className="card__details--icons-count">{'23,000'}</span>
               <svg  className="card__details--icons-svg">
@@ -48,7 +56,7 @@ class Card extends Component {
                 <use xlinkHref="./img/sprite.svg#icon-bubble" />
               </svg>
             </span>
-          </span>
+          </div>
           <span className="card--crumbs">
             <span></span>
             <span></span>

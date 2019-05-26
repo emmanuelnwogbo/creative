@@ -5,13 +5,14 @@ import '../scss/components/container.scss'
 import rainbowGenerator from '../helpers/rainbow';
 
 const Card = lazy(() => import('./Card'));
+const Project = lazy(() => import('./Project'));
 
 
 class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      headerLabel: 'All',
+      headerLabel: 'Home',
       results: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     }
   }
@@ -19,7 +20,7 @@ class Container extends Component {
   renderResultCards = () => {
     const { results } = this.state;
     return results.map(result => {
-      return( 
+      return ( 
         <Suspense fallback={
           <div style={{
             background: 'rgba(0, 0, 0, 0.1)',

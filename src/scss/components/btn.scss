@@ -22,7 +22,7 @@
 .btn {
   &__header {
     background: linear-gradient(to right bottom, #EC008C, #FC6767);
-    @media only screen and (max-width: 64em) {
+    @media only screen and (max-width: 65.563em) {
       padding: .5rem 4rem;
       margin: 1rem 0;
       text-align: center;
@@ -36,7 +36,7 @@
       color: transparent;
       border: 1px solid #EC008C;
 
-      @media only screen and (max-width: 64em) {
+      @media only screen and (max-width: 65.563em) {
         padding: .5rem 4rem;
         margin: 1rem 0;
         text-align: center;
