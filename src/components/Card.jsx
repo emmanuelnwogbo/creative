@@ -11,7 +11,7 @@ class Card extends Component {
     return (
       <div className="card">
         <div className="card--type">
-          <p>video</p>
+          <p>{`video`}</p>
         </div>
         <figure className="card--fig">
           <div className="card--sidenav">

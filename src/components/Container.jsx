@@ -5,14 +5,14 @@ import '../scss/components/container.scss'
 import rainbowGenerator from '../helpers/rainbow';
 
 const Card = lazy(() => import('./Card'));
-const Project = lazy(() => import('./Project'));
+const Profile = lazy(() => import('./Profile'));
 
 
 class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      headerLabel: 'Home',
+      label: 'Home',
       results: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     }
   }
@@ -20,6 +20,25 @@ class Container extends Component {
   renderResultCards = () => {
     const { results } = this.state;
     return results.map(result => {
+      if (result === 2 || result === 8 || result === 10 || result === 15) {
+        return (
+          <Suspense fallback={
+            <div style={{
+              background: 'rgba(0, 0, 0, 0.1)',
+              borderRadius: '.5rem'
+            }}>
+              <div style={{
+                height: '20rem',
+              }}></div>
+              <div style={{
+                padding: '2rem 1rem'
+              }}></div>
+            </div>
+          } key={result}>
+            <Profile />
+          </Suspense>
+        )
+      }
       return ( 
         <Suspense fallback={
           <div style={{
@@ -44,28 +63,96 @@ class Container extends Component {
     });
   }
 
-  render() {
-    const { headerLabel } = this.state;
-    //console.log(this.props)
-    return (
-      <div className="container">
-        <div className="container__header">
-          <div className="container__header--label">
-            <p className="container__header--label-main">{headerLabel}</p>
-            <p className="container__header--label-sub">{'Gifs, Videos, and Art by awesome and creative people'}</p>
+  renderProfileCards = () => {
+    const { results } = this.state;
+    return results.map(result => {
+      return (
+        <Suspense fallback={
+          <div style={{
+            background: 'rgba(0, 0, 0, 0.1)',
+            borderRadius: '.5rem'
+          }}>
+            <div style={{
+              height: '20rem',
+            }}></div>
+            <div style={{
+              padding: '2rem 1rem'
+            }}></div>
           </div>
-        </div>
-        {this.renderResultCards()}
-      </div>
+        } key={result}>
+          <Profile />
+        </Suspense>
+      )
+    })
+  }
+
+  renderSubHeader = (label) => {
+    if (label === 'Profiles') {
+      return (
+        <p className="container__header--label-sub">Network and Collaborate with awesome and creative people</p>
+      )
+    }
+
+    return (
+      <p className="container__header--label-sub">{'Gifs, Videos, and Art by awesome and creative people'}</p>
     )
+  }
+
+  renderHeader = (label) => {
+    return (
+      <div className="container__header">
+      <div className="container__header--label">
+        <p className="container__header--label-main">{label}</p>
+        {this.renderSubHeader(label)}
+      </div>
+    </div>
+    )
+  }
+
+  render() {
+    console.log(this.props.label)
+    const { label } = this.props;
+    if (label === 'Home') {
+      return (
+        <div className="container">
+          {this.renderHeader(label)}
+          {this.renderResultCards()}
+        </div>
+      )
+    }
+
+    if (label === 'Tracks') {
+      return (
+        <div className="container">
+          {this.renderHeader(label)}
+        </div>
+      )
+    }
+
+    if (label === 'Profiles') {
+      return (
+        <div className="container">
+          {this.renderHeader(label)}
+          {this.renderProfileCards()}
+        </div>
+      )
+    }
+
+    if (label === 'Projects') {
+      return (
+        <div className="container">
+          {this.renderHeader(label)}
+        </div>
+      )
+    }
   }
 }
 
 function mapStateToProps(state) {
-  const { menu } = state;
+  const { menuReducer } = state;
   return {
-    menu
+    label: menuReducer.label
   }
 }
 
-export default connect(mapStateToProps, {  })(Container);
+export default connect(mapStateToProps)(Container);

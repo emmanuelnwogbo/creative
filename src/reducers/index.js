@@ -4,7 +4,7 @@ import userAcccountReducer from './userAcccountReducer';
 import signInFormVisibility from './signInFormVisibility'
 
 export default combineReducers({
-  menu: menuReducer,
+  menuReducer,
   userAccountStat: userAcccountReducer,
   signInFormVisible: signInFormVisibility
 });
