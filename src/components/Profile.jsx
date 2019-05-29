@@ -16,7 +16,10 @@ class Profile extends Component {
     const { professions } = this.state;
     return professions.map(profession => {
       timer+=1;
-      return <span key={timer}><p>{profession}</p></span>
+      if (timer === professions.length) {
+        return <span key={timer}><p>{profession}.</p></span>
+      }
+      return <span key={timer}><p>{profession},</p></span>
     })
   }
 
