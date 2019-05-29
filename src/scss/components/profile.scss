@@ -1,3 +1,11 @@
+@mixin socialIconsReveal {
+  @for $i from 1 through 9 {
+    &:nth-child(#{$i}) {
+      transition: all #{$i*.1}s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+  }
+}
+
 .profile {
   position: relative;
   padding-bottom: 0;
@@ -5,7 +13,49 @@
   border-radius: .3rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
-  
+
+  &:hover &__sidenav {
+    & span {
+      transform: translateX(0);
+    }
+  }
+
+  &__sidenav {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    padding: .9rem;
+    height: 55%;
+
+    & span {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transform: translateX(6rem);
+      @include socialIconsReveal;
+
+      @media only screen and (max-width: 64em) {
+        transform: translateX(0);
+      }
+    }
+
+    &--svg {
+      height: 2rem;
+      width: 2rem;
+    }
+  }
+
   &--bigfig {
     height: 30rem;
     width: 100%;
@@ -144,6 +194,22 @@
       fill: #fff;
       transform: translateY(.2rem);
       margin-right: .5rem;
+    }
+  }
+
+  &--crumbs {
+    position: absolute;
+    bottom: 0;
+    right: 1.6rem;
+    padding: 1rem;
+    cursor: pointer;
+
+    & span {
+      padding: 4px;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 .2rem;
+      background: rgba(30, 39, 46, 0.4);
     }
   }
 }

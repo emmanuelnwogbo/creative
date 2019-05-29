@@ -23,6 +23,28 @@ class Profile extends Component {
   render() {
     return (
       <div className="profile">
+        <div className="profile__sidenav">
+          <span>
+            <svg className="profile__sidenav--svg">
+              <use xlinkHref="./img/sprite.svg#icon-twitter" />
+            </svg>
+          </span>
+          <span>
+            <svg className="profile__sidenav--svg">
+              <use xlinkHref="./img/sprite.svg#icon-instagram" />
+            </svg>
+          </span>
+          <span>
+            <svg className="profile__sidenav--svg">
+              <use xlinkHref="./img/sprite.svg#icon-facebook1" />
+            </svg>
+          </span>
+          <span>
+            <svg className="profile__sidenav--svg">
+              <use xlinkHref="./img/sprite.svg#icon-linkedin1" />
+            </svg>
+          </span>
+        </div>
         <figure className="profile--bigfig">
           <img src="./img/me.png" className="profile__top--img"/>
         </figure>
@@ -70,6 +92,11 @@ class Profile extends Component {
             <span>Save to contacts</span>
           </div>
         </div>
+        <span className="profile--crumbs">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
       </div>
     )
   }
