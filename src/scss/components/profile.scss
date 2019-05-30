@@ -14,6 +14,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
   grid-row: span 16;
+  cursor: pointer;
 
   &:hover &__sidenav {
     & span {
@@ -91,11 +92,11 @@
     }
 
     &--btn {
-      border-radius: 3rem;
-      box-shadow: 0 0.5rem 0.5rem rgba(255, 0, 86,.4);
+      border-radius: .3rem 3rem;
+      box-shadow: 0 0.5rem 0.5rem rgba(255, 0, 86, 0.4);
       background: linear-gradient(to right bottom, #EC008C, #FC6767);
       font-size: 1.4rem;
-      padding: .5rem 1.5rem;
+      padding: .6rem 1.5rem;
       height: 3.3rem;
       position: absolute;
       right: 1.6rem;
@@ -178,7 +179,7 @@
   }
 
   &__save--btn {
-    border-radius: .3rem;
+    border-radius: 3rem;
     box-shadow: 0 0.5rem 0.5rem rgba(255, 0, 86, 0.4);
     background: linear-gradient(to right bottom, #EC008C, #FC6767);
     font-size: 1.4rem;

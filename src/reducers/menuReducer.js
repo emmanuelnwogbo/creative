@@ -1,7 +1,7 @@
 import { CHANGE_MENU } from '../actions';
 
 const initialMenuName = {
-  label: 'Profiles'
+  label: 'Projects'
 }
 
 export default (state=initialMenuName, action={}) => {

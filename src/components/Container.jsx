@@ -6,6 +6,7 @@ import rainbowGenerator from '../helpers/rainbow';
 
 const Card = lazy(() => import('./Card'));
 const Profile = lazy(() => import('./Profile'));
+const Project = lazy(() => import('./Project'))
 
 
 class Container extends Component {
@@ -13,14 +14,17 @@ class Container extends Component {
     super(props);
     this.state = {
       label: 'Home',
-      results: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+      results: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 
+        13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 
+        30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41]
     }
   }
 
   renderResultCards = () => {
     const { results } = this.state;
     return results.map(result => {
-      if (result === 2 || result === 8 || result === 10 || result === 15) {
+      if (result === 2 || result === 8 || result === 10 || result === 15 || result === 18 || 
+        result === 20 || result === 21 || result === 30 || result === 35 || result === 38) {
         return (
           <Suspense fallback={
             <div style={{
@@ -39,6 +43,28 @@ class Container extends Component {
           </Suspense>
         )
       }
+
+      if (result === 12 || result === 28 || result === 34 || result === 19 || result === 37 || 
+        result === 24 || result === 33 || result === 40 || result === 9 || result === 22) {
+        return (
+          <Suspense fallback={
+            <div style={{
+              background: 'rgba(0, 0, 0, 0.1)',
+              borderRadius: '.5rem'
+            }}>
+              <div style={{
+                height: '20rem',
+              }}></div>
+              <div style={{
+                padding: '2rem 1rem'
+              }}></div>
+            </div>
+          } key={result}>
+            <Project />
+          </Suspense>
+        )
+      }
+      
       return ( 
         <Suspense fallback={
           <div style={{
@@ -63,7 +89,7 @@ class Container extends Component {
     });
   }
 
-  renderProfileCards = () => {
+  renderProfileCardsOnly = () => {
     const { results } = this.state;
     return results.map(result => {
       return (
@@ -81,6 +107,29 @@ class Container extends Component {
           </div>
         } key={result}>
           <Profile />
+        </Suspense>
+      )
+    })
+  }
+
+  renderProjectCardsOnly = () => {
+    const { results } = this.state;
+    return results.map(result => {
+      return (
+        <Suspense fallback={
+          <div style={{
+            background: 'rgba(0, 0, 0, 0.1)',
+            borderRadius: '.5rem'
+          }}>
+            <div style={{
+              height: '20rem',
+            }}></div>
+            <div style={{
+              padding: '2rem 1rem'
+            }}></div>
+          </div>
+        } key={result}>
+          <Project />
         </Suspense>
       )
     })
@@ -133,7 +182,7 @@ class Container extends Component {
       return (
         <div className="container">
           {this.renderHeader(label)}
-          {this.renderProfileCards()}
+          {this.renderProfileCardsOnly()}
         </div>
       )
     }
@@ -142,6 +191,7 @@ class Container extends Component {
       return (
         <div className="container">
           {this.renderHeader(label)}
+          {this.renderProjectCardsOnly()}
         </div>
       )
     }

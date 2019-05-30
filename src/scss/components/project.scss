@@ -1,6 +1,205 @@
 .project {
-  grid-column: 1 / 3;
-  background: red;
-  grid-row: span 2;
-  height: 63rem;
+  grid-row: span 23;
+  background: #fff;
+  position: relative;
+  padding-top: 3rem;
+  border-radius: .2rem;
+  color: #1e272e;
+  cursor: pointer;
+
+  &--type {
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    width: 5rem;
+    display: flex;
+    border-radius: .6rem;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    z-index: 3;
+    top: 2%;
+    left: 2%;
+    padding: .2rem;
+    background: rgba(236, 240, 241, 0.8);
+    color: #000000;
+  }
+
+  &__top {
+
+    &--fig {
+      position: relative;
+      height: 30rem;
+      width: 100%;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+    }
+
+    &--img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__middle {
+    position: relative;
+    //padding: 1.5rem 0;
+    padding-bottom: 0;
+    border-radius: .3rem;
+    width: 93%;
+    //overflow: hidden;
+    margin: 0 auto;
+    transform: translateY(-3.5rem);
+    background: #fff;
+    z-index: 1;
+    border-radius: .3rem 3rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+    
+    &--buttons {
+      width: 100%;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+
+      &-btn {
+        border-radius: .3rem 3rem;
+        box-shadow: 0 0.5rem 0.5rem rgba(255, 0, 86, 0.4);
+        background: linear-gradient(to right bottom, #EC008C, #FC6767);
+        font-size: 1.4rem;
+        padding: .6rem 3rem;
+        height: 3.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      &-btn-svg {
+        box-shadow: 0 0.5rem 0.5rem rgba(255, 0, 86, 0.4);
+        background: linear-gradient(to right bottom, #EC008C, #FC6767);
+        font-size: 1.4rem;
+        padding: .6rem 1rem;
+        height: 3.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      &-svg {
+        height: 2rem;
+        width: 2rem;
+        fill: #fff;
+      }
+    }
+
+    &--h3 {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1e272e;
+      padding-bottom: 1rem;
+      color: transparent;
+      background: linear-gradient(to right bottom, #EC008C, #FC6767);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    &--bio {
+      text-align: left;
+      font-size: 1.2rem;
+      font-weight: 400;
+      padding: 0 1.5rem;
+      padding-bottom: 1rem;
+    }
+
+    &__people {
+      border-top: .2px solid rgba(53, 59, 72,.5);
+
+      &--h4 {
+        text-align: left;
+        padding: 0 1.5rem;
+        padding-top: 1.5rem;
+        font-size: 1.2rem;
+      }
+      
+      &--photos {
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        padding: 1rem;
+      }
+
+      &--fig {
+        border-radius: 50%;
+        overflow: hidden;
+        height: 4rem;
+        width: 4rem;
+        flex-shrink: 0;
+        background: #fff;
+        cursor: pointer;
+      }
+  
+      &--img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+  }
+
+  &__bottom {
+    position: absolute;
+    width: 100%;
+    padding-right: 1.5rem;
+    background: #fff;
+    transform: translateY(-4rem);
+
+    &--h5 {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: rgba(53, 59, 72,.5);
+      padding: 1.5rem;
+
+      & span {
+        display: inline-block;
+        margin-right: .5rem;
+        color: #1e272e;
+      }
+    }
+
+    &--gallery {
+      display: flex;
+      overflow: hidden;
+      padding-left: 1.5rem;
+      padding-bottom: 1.5rem;
+
+      &-fig {
+        flex-shrink: 0;
+        height: 5rem;
+        width: 5rem;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: .3rem;
+        margin-right: 1.1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.5);
+      }
+
+      &-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+  }
 }

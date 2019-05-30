@@ -58,11 +58,11 @@
   
   &__header {
     grid-column: 1 / -1;
+    grid-row: span 3;
     color: transparent;
     background: linear-gradient(to right, #302B63, #0F0C29);
     -webkit-background-clip: text;
     background-clip: text;
-    grid-row: span 3;
 
     &--label-main {
       font-size: 2.5rem;
@@ -71,6 +71,10 @@
 
     &--label-sub {
       font-size: 1.8rem;
+    }
+
+    @media only screen and (max-width: 50em) {
+      grid-row: span 4;
     }
   }
 }
