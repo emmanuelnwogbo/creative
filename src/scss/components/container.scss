@@ -1,5 +1,5 @@
 .container {
-  padding: 4rem 17rem;
+  padding: 4rem 16rem;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(26.5rem, 1fr));
@@ -8,21 +8,25 @@
   margin-top: 6rem;
   justify-content: center;
 
-  @media only screen and (max-width: 107.875em) {
+  @media only screen and (max-width: 106.125em) {
+    padding: 6rem;
+  }
+
+  @media only screen and (max-width: 91.563em) {
+    padding: 4rem 3rem;
+  }
+
+  @media only screen and (max-width: 90.125em) {
+    padding: 4rem 1rem;
+  }
+
+  @media only screen and (max-width: 82.875em) {
     padding: 4rem 9rem;
-  }
-
-  @media only screen and (max-width: 92.5em) {
-    padding: 4rem;
-  }
-
-  @media only screen and (max-width: 69.063em) {
-    padding: 4rem 2rem;
-  }
-
-  @media only screen and (max-width: 56.375em) {
-    padding: 4rem 0rem;
     grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
+  }
+
+  @media only screen and (max-width: 64em) {
+    padding: 4rem 1rem;
   }
 
   @media only screen and (max-width: 50em) {
