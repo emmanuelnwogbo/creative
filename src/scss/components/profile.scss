@@ -145,6 +145,10 @@
       font-size: 1.2rem;
       padding: 1.5rem 0;
 
+      & &-label:nth-child(1) {
+        margin-bottom: .8rem;
+      }
+
       &-label { 
         color: rgba(30, 39, 46, .8);
 
