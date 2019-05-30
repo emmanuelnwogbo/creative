@@ -25,7 +25,12 @@
     grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
   }
 
-  @media only screen and (max-width: 64em) {
+  @media only screen and (max-width: 76.25em) {
+    padding: 4rem 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
+  }
+
+  @media only screen and (max-width: 67.938em) {
     padding: 4rem 1rem;
   }
 
@@ -44,6 +49,10 @@
   @media only screen and (max-width: 25.875em) {
     padding: 4rem 1rem;
     grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+  }
+
+  @media only screen and (min-width: 120.125em) {
+    padding: 6rem;
   }
   
   &__header {
