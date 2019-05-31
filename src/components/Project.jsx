@@ -52,13 +52,13 @@ class Project extends Component {
     return photos.map(photo => {
       if (photos[0] === photo) {
         return (
-          <figure className="project__bottom--gallery-fig">
+          <figure key={photo} className="project__bottom--gallery-fig">
             <img src="./img/project.jpg" className="project__bottom--gallery-img"/>
           </figure>
         )
       }
       return (
-        <figure className="project__bottom--gallery-fig">
+        <figure key={photo} className="project__bottom--gallery-fig">
           <img src="./img/test2.jpg" className="project__bottom--gallery-img"/>
         </figure>
       )

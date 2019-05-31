@@ -3,3 +3,10 @@
 @import "base/animations";
 @import "base/mixins";
 
+//for development 
+form {
+  background: #fff;
+  width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
