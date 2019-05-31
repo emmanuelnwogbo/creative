@@ -48,7 +48,7 @@ class Home extends Component {
         </form>
         <div style={{
           width: `40rem`,
-          margin: `2rem auto`
+          margin: `4rem auto`
         }}>
           <CommentField 
           include_socialIcons={true}
