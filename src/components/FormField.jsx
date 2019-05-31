@@ -24,6 +24,28 @@ class FormField extends Component {
     this.setState({ current: target }, this.openDropDown)
   }
 
+  renderDropDownInput = (placeholder, name, type, required, current) => {
+    if (required && required !== null && required !== undefined) {
+      return (
+        <input 
+        name={name} 
+        type={type} 
+        value={current} 
+        placeholder={placeholder} 
+        className={`form__field--input form__field--input--dropdown`} 
+        required/>
+      )
+    }
+    return (
+      <input 
+      name={name} 
+      type={type} 
+      value={current} 
+      placeholder={placeholder} 
+      className={`form__field--input form__field--input--dropdown`}/>
+    );
+  }
+
   renderDropDowns = () => {
     const { dropdownItems, current } = this.state;
     if (dropdownItems && current) {
@@ -79,7 +101,7 @@ class FormField extends Component {
               <p className={`form__field--label ${classNames}`}>{name}:</p>
             </div>
             <div className={`form__field--area form__field--area-dropdown ${classNames}`}>
-              <input name={name} type={type} value={current} placeholder={placeholder} className={`form__field--input form__field--input--dropdown ${classNames}`}/>
+              {this.renderDropDownInput(placeholder, name, type, required, current)}
               <div className={`form__field--area-dropdownmenu ${classNames}`}>
                 <input id={`form__field--area-dropdownmenu-checkbox`} className={`form__field--area-dropdownmenu-checkbox`} type="checkbox" />
                 {this.renderDropDowns()}
@@ -102,6 +124,7 @@ class FormField extends Component {
         </div>
       )
     }
+
     return (
       <div className={`form__field ${classNames}`}>
         <div className={`form__field--area ${classNames}`}>
