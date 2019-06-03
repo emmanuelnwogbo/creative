@@ -49,7 +49,7 @@ class Header extends Component {
           <span className={`header__menu--item`}>People</span>
           <span className={`header__menu--item`}>Projects</span>
           <span className={`header__menu--item`}>Jobs</span>
-          <span className={`header__menu--item`}>Tools and Products</span>
+          <span className={`header__menu--item`}>Products and Services</span>
           <span className={`header__menu--item`}>Create</span>
           <span className={`header__menu--item header__menu--item-btn`}>Sign Up/Login</span>
         </div>

@@ -1,21 +1,21 @@
 .container {
-  padding: 4rem 19rem;
+  padding: 0rem 19rem;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(26.5rem, 1fr));
   grid-gap: 2rem;
   align-items: start;
-  margin-top: 6rem;
+  margin-top: 5.5rem;
   justify-content: center;
   
   &__header {
     grid-column: 1 / -1;
     grid-row: span 3;
-    color: rgba(30, 39, 46,1.0);
+    color: #000000;
 
     &--label-main {
-      font-size: 2.5rem;
-      font-weight: 900;
+      font-size: 3rem;
+      font-weight: 700;
     }
 
     &--label-sub {

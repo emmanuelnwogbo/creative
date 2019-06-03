@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 
 import Header from './Header';
 import Container from './Container';
 import SignInForm from './SignInForm';
+const Jumbotron = lazy(() => import('./Jumbotron'))
 
 //import FormField, CommentField components for development purposes
 import FormField from './FormField';
@@ -37,6 +38,9 @@ class Home extends Component {
     return (
       <div className="home">
         <Header />
+        <Suspense fallback={<div>loading</div>}>
+          <Jumbotron/>
+        </Suspense>
         <Container />
         <form>
           <FormField type="text" name="Firstname" placeholder={'Firstname'}/>
