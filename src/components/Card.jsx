@@ -23,10 +23,10 @@ class Card extends Component {
               <use xlinkHref="./img/sprite.svg#icon-share" />
             </svg>
             </div>
-          <div className="card--fig-overlay" style={{
+          {/*<div className="card--fig-overlay" style={{
             background: `${overlayStyle}`,
             opacity: '.3'
-          }}></div>
+          }}></div>*/}
           <img className="card--img" src="./img/test3.jpg"/>
         </figure>
         <div className="card__details">

@@ -1,68 +1,17 @@
 .container {
-  padding: 4rem 16rem;
+  padding: 4rem 19rem;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(26.5rem, 1fr));
-  grid-auto-rows: 1rem;
   grid-gap: 2rem;
   align-items: start;
   margin-top: 6rem;
   justify-content: center;
-
-  @media only screen and (max-width: 106.125em) {
-    padding: 6rem;
-  }
-
-  @media only screen and (max-width: 91.563em) {
-    padding: 4rem 3rem;
-  }
-
-  @media only screen and (max-width: 90.125em) {
-    padding: 4rem 1rem;
-  }
-
-  @media only screen and (max-width: 82.875em) {
-    padding: 4rem 9rem;
-    grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
-  }
-
-  @media only screen and (max-width: 76.25em) {
-    padding: 4rem 3rem;
-    grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
-  }
-
-  @media only screen and (max-width: 67.938em) {
-    padding: 4rem 1rem;
-  }
-
-  @media only screen and (max-width: 50em) {
-    padding: 4rem 6rem;
-  }
-
-  @media only screen and (max-width: 37.5em) {
-    padding: 4rem 2rem;
-  }
-
-  @media only screen and (max-width: 30em) {
-    padding: 4rem 3rem;
-  }
-
-  @media only screen and (max-width: 25.875em) {
-    padding: 4rem 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
-  }
-
-  @media only screen and (min-width: 120.125em) {
-    padding: 6rem;
-  }
   
   &__header {
     grid-column: 1 / -1;
     grid-row: span 3;
-    color: transparent;
-    background: linear-gradient(to right, #302B63, #0F0C29);
-    -webkit-background-clip: text;
-    background-clip: text;
+    color: rgba(30, 39, 46,1.0);
 
     &--label-main {
       font-size: 2.5rem;
@@ -71,10 +20,6 @@
 
     &--label-sub {
       font-size: 1.8rem;
-    }
-
-    @media only screen and (max-width: 50em) {
-      grid-row: span 4;
     }
   }
 }

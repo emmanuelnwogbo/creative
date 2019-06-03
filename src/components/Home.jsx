@@ -36,8 +36,6 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        {this.rendermobileHeader()}
-        <SignInForm />
         <Header />
         <Container />
         <form>

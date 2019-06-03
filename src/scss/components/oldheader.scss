@@ -1,0 +1,338 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  padding: 0 5.5rem;
+  align-items: center;
+  //justify-content: center;
+  height: 6.5rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+  //color: rgba(30, 55, 153,.8);
+  z-index: 3000;
+  justify-content: space-between;
+  transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &__checkbox--search-1200pxscreen {
+    display: none;
+  }
+
+  &__checkbox--search-1200pxscreen:checked ~ &__search {
+    display: block;
+  }
+
+  &__checkbox--search-1200pxscreen:checked {
+    & ~ .header--name {
+      display: none;
+    }
+
+    & ~ .header__search--1200pxscreen {
+      display: none;
+    }
+
+    & ~ .header__search > .header__search--icon {
+      display: none;
+    }
+
+    & ~ .header__menu {
+      display: none;
+    }
+
+    & ~ .header__svgs {
+      display: none;
+    }
+
+    & ~ .header--btns {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 100.5em) {
+    padding: 0 2.5rem;
+  }
+
+  @media only screen and (max-width: 92.75em) {
+    padding: 0 1rem;
+  }
+
+  @media only screen and (max-width: 91.375em) {
+    font-size: 1.5rem;
+  }
+
+  @media only screen and (max-width: 75.5em) {
+    padding: 0;
+    justify-content: center;
+
+    & > div {
+      margin: 0;
+    }
+  }
+
+  @media only screen and (max-width: 81.438em) {
+    justify-content: space-evenly;
+  }
+
+  @media only screen and (max-width: 68.25em) {
+    justify-content: space-evenly
+  }
+
+  @media only screen and (max-width: 65.563em) {
+    flex-direction: column;
+    justify-content: start;
+    align-content: flex-start;
+    height: 100%;
+    width: 45%;
+    padding: 1.8rem 0;
+    font-size: 2rem;
+    transform: translateX(-100%);
+    overflow-y: scroll;
+  }
+
+  @media only screen and (max-width: 50em) {
+    width: 58%
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    width: 76%
+  }
+
+  &--name {
+    text-transform: uppercase;
+    font-weight: 900;
+    //background: red;
+    background: linear-gradient(to right bottom, #EC008C, #FC6767);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    cursor: pointer;
+  }
+
+  &__search {
+    position: relative;
+    height: 100%;
+    width: 27%;
+    //background: blue;
+
+    @media only screen and (max-width: 89.063em) {
+      width: 20%;
+    }
+
+    @media only screen and (max-width: 81.438em) {
+      //position: absolute;
+      //top: 0px;
+      //left: -36px;
+      width: 100%;
+      z-index: 1000;
+      padding: 0 2rem;
+      display: none;
+    }
+
+    @media only screen and (max-width: 65.563em) {
+      position: relative;
+      height: 6rem;
+      width: 98%;
+      padding: 0;
+      display: block;
+      left: 0;
+    }
+
+    &--input { 
+      height: 100%;
+      width: 100%;
+      outline: none;
+      border: none;
+      font-size: 2.1rem;
+      padding: 1rem 5rem;
+      border-left: 0.5px solid rgba(30, 39, 46, 0.8);
+      transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+      //background: blue;
+
+      @media only screen and (max-width: 75.25em) {
+        padding: 1rem 3rem;
+      }
+
+      @media only screen and (max-width: 81.438em) {
+        padding: 0;
+      }
+
+      @media only screen and (max-width: 65.563em) {
+        padding: 3rem;
+        background: rgba(30, 55, 153,.6);
+
+        &:focus {
+          background: rgba(30, 55, 153,.6);
+        }
+      }
+
+      &:focus {
+        background: rgba(30, 55, 153,.4);
+      }
+
+      &::-webkit-input-placeholder {
+        color: rgba(30, 39, 46, 0.5);
+        transform: translateX(.5rem);
+        font-weight: 500;
+      }
+    }
+
+    &--icon {
+      height: 1.9rem;
+      width: 1.9rem;
+      position: absolute;
+      top: 37%;
+      left: 5%;
+      fill: rgba(30, 39, 46, 0.5);
+      
+      @media only screen and (max-width: 81.438em) {
+        cursor: pointer;
+      }
+    }
+
+    &--icon-1200pxscreen {
+      position: relative;
+    }
+
+    &--1200pxscreen {
+      display: none;
+
+      @media only screen and (max-width: 81.438em) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: 65.563em) {
+        display: none;
+      }
+    }
+
+    &--closeicon-parent {
+      position: absolute;
+      right: 2%;
+      top: 11%;
+      height: 5rem;
+      width: 5rem;
+      background: rgba(44, 62, 80,.4);
+      border-radius: 50%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      @media only screen and (max-width: 81.438em) {
+        display: flex;
+      }
+
+      @media only screen and (max-width: 65.563em) {
+        display: none;
+      }
+    }
+
+    &--closeicon {
+      height: 2.3rem;
+      width: 2.3rem;
+      fill: rgba(44, 62, 80,.6);
+      cursor: pointer;
+    }
+  }
+
+  &__menu {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(30, 39, 46,.8);
+    //background: green;
+
+    @media only screen and (max-width: 65.563em) {
+      flex-direction: column;
+    }
+
+    &--cursor {
+      position: absolute;
+      background: rgba(30, 55, 153,.8);
+      height: .3rem;
+      border-radius: 3rem;
+      width: 14%;
+      bottom: 0;
+      left: 4%;
+      transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: inline-block;
+
+      @media only screen and (max-width: 65.563em) {
+        display: none;
+      }
+    }
+
+    &--item {
+      display: inline-block;
+      cursor: pointer;
+      padding: 2rem;
+      margin: 0 .2rem;
+      transition: all .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+      &:hover {
+        color: rgba(30, 55, 153,.8)
+      }
+
+      @media only screen and (max-width: 65.563em) {
+        padding: .5rem 4rem;
+        border: 1.2px solid rgba(30, 55, 153, 0.8);
+        margin: 1rem 0;
+        text-align: center;
+        font-size: 1.8rem;
+
+        &:hover {
+          color: rgba(30, 39, 46, 0.8)
+        }
+      }
+    }
+
+    &--currentitem {
+      color: rgba(30, 55, 153,.8);
+      @media only screen and (max-width: 65.563em) {
+        background: rgba(30, 55, 153,.8);
+        color: #fff;
+
+        &:hover {
+          color: #fff
+        }
+      }
+    }
+  }
+
+  &__svgs {
+    //transform: translateX(17rem) translateY(0.5rem);
+    //background: black;
+
+    &--body {
+      position: relative;
+      display: inline-block;
+      padding: 1.5rem;
+      cursor: pointer;
+
+      @media only screen and (max-width: 20em) {
+        padding: 0
+      }
+    }
+
+    &--svg {
+      height: 3rem;
+      width: 3rem;
+      fill: rgba(30, 55, 153,.8)
+    }
+  }
+
+  &--btns {
+    //transform: translateX(22rem);\
+    //background: pink
+    @media only screen and (max-width: 65.563em) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

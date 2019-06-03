@@ -6,7 +6,8 @@ import rainbowGenerator from '../helpers/rainbow';
 
 const Card = lazy(() => import('./Card'));
 const Profile = lazy(() => import('./Profile'));
-const Project = lazy(() => import('./Project'))
+const Project = lazy(() => import('./Project'));
+const Job = lazy(() => import('./Job'))
 
 
 class Container extends Component {
@@ -23,48 +24,6 @@ class Container extends Component {
   renderResultCards = () => {
     const { results } = this.state;
     return results.map(result => {
-      if (result === 2 || result === 8 || result === 10 || result === 15 || result === 18 || 
-        result === 20 || result === 21 || result === 30 || result === 35 || result === 38) {
-        return (
-          <Suspense fallback={
-            <div style={{
-              background: 'rgba(0, 0, 0, 0.1)',
-              borderRadius: '.5rem'
-            }}>
-              <div style={{
-                height: '20rem',
-              }}></div>
-              <div style={{
-                padding: '2rem 1rem'
-              }}></div>
-            </div>
-          } key={result}>
-            <Profile />
-          </Suspense>
-        )
-      }
-
-      if (result === 12 || result === 28 || result === 34 || result === 19 || result === 37 || 
-        result === 24 || result === 33 || result === 40 || result === 9 || result === 22) {
-        return (
-          <Suspense fallback={
-            <div style={{
-              background: 'rgba(0, 0, 0, 0.1)',
-              borderRadius: '.5rem'
-            }}>
-              <div style={{
-                height: '20rem',
-              }}></div>
-              <div style={{
-                padding: '2rem 1rem'
-              }}></div>
-            </div>
-          } key={result}>
-            <Project />
-          </Suspense>
-        )
-      }
-      
       return ( 
         <Suspense fallback={
           <div style={{
@@ -166,6 +125,66 @@ class Container extends Component {
         <div className="container">
           {this.renderHeader(label)}
           {this.renderResultCards()}
+          <Suspense fallback={
+            <div style={{
+              background: 'rgba(0, 0, 0, 0.1)',
+              borderRadius: '.5rem'
+            }}>
+              <div style={{
+                height: '20rem',
+              }}></div>
+              <div style={{
+                padding: '2rem 1rem'
+              }}></div>
+            </div>
+          }>
+            <Profile />
+          </Suspense>
+          <Suspense fallback={
+            <div style={{
+              background: 'rgba(0, 0, 0, 0.1)',
+              borderRadius: '.5rem'
+            }}>
+              <div style={{
+                height: '20rem',
+              }}></div>
+              <div style={{
+                padding: '2rem 1rem'
+              }}></div>
+            </div>
+          }>
+            <Job />
+          </Suspense>
+          <Suspense fallback={
+            <div style={{
+              background: 'rgba(0, 0, 0, 0.1)',
+              borderRadius: '.5rem'
+            }}>
+              <div style={{
+                height: '20rem',
+              }}></div>
+              <div style={{
+                padding: '2rem 1rem'
+              }}></div>
+            </div>
+          }>
+            <Job previewMedia={"./img/project.jpg"}/>
+          </Suspense>
+          <Suspense fallback={
+            <div style={{
+              background: 'rgba(0, 0, 0, 0.1)',
+              borderRadius: '.5rem'
+            }}>
+              <div style={{
+                height: '20rem',
+              }}></div>
+              <div style={{
+                padding: '2rem 1rem'
+              }}></div>
+            </div>
+          }>
+            <Project />
+          </Suspense>
         </div>
       )
     }
