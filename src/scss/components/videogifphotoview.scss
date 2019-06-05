@@ -30,6 +30,19 @@
         flex-direction: column;
         line-height: 2.1rem;
 
+        &--item {
+          &-follow {
+            padding: .5rem 1.4rem;
+            display: inline-block;
+            margin-top: .5rem;
+            border-radius: .3rem;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(to right bottom, #EC008C, #FC6767);
+          }
+        }
+
         & &--item:nth-child(1) {
           font-weight: 700;
           font-size: 1.8rem;
@@ -37,7 +50,7 @@
 
         & &--item:nth-child(2) {
           color: #EC008C;
-          & p span {
+          & h4 span {
             color: #000000;
             display: inline-block;
             margin-right: .5rem;
@@ -50,6 +63,7 @@
         width: 5rem;
         border-radius: 50%;
         overflow: hidden;
+        cursor: pointer;
       }
 
       &--userimg {
@@ -69,8 +83,8 @@
         align-items: center;
 
         & span {
-          padding: .5rem 1.3rem;
-          border-radius: .5rem;
+          padding: .3rem 1rem;
+          border-radius: .4rem;
           background: linear-gradient(to right bottom, #EC008C, #FC6767);
           font-weight: 700;
           color: #fff;
@@ -98,7 +112,7 @@
 
     &__media {
       position: relative;
-      height: 60rem;
+      min-height: 60rem;
       background: red;
       margin: 0 auto;
       //use max-width for the actual media === 100%
@@ -112,12 +126,30 @@
         width: 65%;
 
         &--text {
-          border-bottom: 1px solid #ddd;
-          padding: 1.5rem 0;
+          border: 1px solid #ddd;
+          padding: 1.5rem;
 
           & span {
             display: block;
             margin-bottom: 1.1rem
+          }
+        }
+
+        &--tags {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 1.9rem 0;
+
+          & span {
+            display: inline-block;
+            flex-shrink: 0;
+            padding: 0 1rem;
+            border-radius: 3rem;
+            background: rgba(232, 67, 147,.5);
+            margin-right: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: #fff;
+            cursor: pointer;
           }
         }
 
@@ -189,9 +221,17 @@
             }
           }
 
+          &--headers {
+            display: flex;
+          }
+
           &--h3 {
             padding: 1rem 0;
             margin-bottom: 1.5rem;
+            margin-right: 2rem;
+            cursor: pointer;
+            text-decoration: underline;
+            color: rgba(30, 39, 46,.8)
           }
         }
       }
@@ -267,6 +307,7 @@
             border: .5rem solid#fff;
             flex-shrink: 0;
             margin-right: 1rem;
+            cursor: pointer;
           }
 
           &--img {

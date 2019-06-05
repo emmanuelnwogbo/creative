@@ -97,6 +97,17 @@ class CommentField extends Component {
           {this.renderIfIncludesMedia(media)}
           {this.renderSocialIcons(include_socialIcons)}
         </div>
+        <div className={`comment__field__crumbs`}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className={`comment__field__crumbs__options`}>
+          <span>Delete</span>
+          <span>Delete</span>
+          <span>Delete</span>
+          <span>Delete</span>
+        </div>
       </div>
     )
   }

@@ -6,7 +6,6 @@ import rainbowGenerator from '../helpers/rainbow';
 
 const Card = lazy(() => import('./Card'));
 const Profile = lazy(() => import('./Profile'));
-const Project = lazy(() => import('./Project'));
 const Job = lazy(() => import('./Job'))
 
 
@@ -170,21 +169,6 @@ class Container extends Component {
           }>
             <Job previewMedia={"./img/project.jpg"}/>
           </Suspense>
-          <Suspense fallback={
-            <div style={{
-              background: 'rgba(0, 0, 0, 0.1)',
-              borderRadius: '.5rem'
-            }}>
-              <div style={{
-                height: '20rem',
-              }}></div>
-              <div style={{
-                padding: '2rem 1rem'
-              }}></div>
-            </div>
-          }>
-            <Project />
-          </Suspense>
         </div>
       )
     }
@@ -193,24 +177,6 @@ class Container extends Component {
       return (
         <div className="container">
           {this.renderHeader(label)}
-        </div>
-      )
-    }
-
-    if (label === 'Profiles') {
-      return (
-        <div className="container">
-          {this.renderHeader(label)}
-          {this.renderProfileCardsOnly()}
-        </div>
-      )
-    }
-
-    if (label === 'Projects') {
-      return (
-        <div className="container">
-          {this.renderHeader(label)}
-          {this.renderProjectCardsOnly()}
         </div>
       )
     }

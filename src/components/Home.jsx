@@ -5,6 +5,7 @@ import Container from './Container';
 import SignInForm from './SignInForm';
 const Jumbotron = lazy(() => import('./Jumbotron'));
 const VideoGifPhotoView = lazy(() => import('./VideoGifPhotoView'))
+const Project = lazy(() => import('./Project'));
 
 //import FormField, CommentField components for development purposes
 import FormField from './FormField';
@@ -72,6 +73,9 @@ class Home extends Component {
             changeVideoGifPhotoViewVisibility={changeVideoGifPhotoViewVisibility} 
             toggleVideoGifPhotoViewVisibility={toggleVideoGifPhotoViewVisibility}
             mediaType={null}/>
+        </Suspense>
+        <Suspense fallback={<div>loading</div>}>
+          <Project />
         </Suspense>
       </div>
     )

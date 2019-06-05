@@ -15,12 +15,12 @@ class Card extends Component {
           <p>{`video`}</p>
         </div>
         <figure className="card--fig">
-          <div className="card--sidenav">
+          {/*<div className="card--sidenav">
             <svg  className="card--sidenav-svg">
               <use xlinkHref="./img/sprite.svg#icon-heart-outlined" />
             </svg>
             <svg className="card--sidenav-svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"></path></svg>
-            </div>
+    </div>*/}
           {/*<div className="card--fig-overlay" style={{
             background: `${overlayStyle}`,
             opacity: '.3'

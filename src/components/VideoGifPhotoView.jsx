@@ -22,13 +22,19 @@ class VideoGifPhotoView extends Component {
 
     if (comments.length < 2) {
       return (
-        <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>{comments.length}<span> Response</span></h3>
+        <div className={`videogifphotoview__content__bio__firsthalf--comments--headers`}>
+          <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>{comments.length}<span> Response</span></h3>
+          <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>See only creator's comments</h3>
+        </div>
       )
     }
 
     if (comments.length > 1) {
       return (
-        <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>{comments.length}<span> Responses</span></h3>
+        <div className={`videogifphotoview__content__bio__firsthalf--comments--headers`}>
+          <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>{comments.length}<span> Responses</span></h3>
+          <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>See only creator's comments</h3>
+        </div>
       )
     }
   }
@@ -89,7 +95,8 @@ class VideoGifPhotoView extends Component {
                 <p>{`What's the name of this project`}</p>
               </div>
               <div className={`videogifphotoview__content__top__names--item`}>
-                <h4 style={{cursor: 'pointer'}}><span>by </span>{`Roman Salo`}</h4>
+                <h4 style={{cursor: 'pointer'}}><span>by</span>{`Roman Salo`}</h4>
+                <span className={`videogifphotoview__content__top__names--item-follow`}>Follow</span>
               </div>
             </div>
             <div className={`videogifphotoview__content__top--btns`}>
@@ -118,6 +125,28 @@ class VideoGifPhotoView extends Component {
                 <span>{`Looking for creative design solutions? We would like to help you! Email us — info@obys.agency`}</span>
                 <span>{`Behance | Facebook | Instagram | Twitter`}</span>
               </div>
+
+              <div className={`videogifphotoview__content__bio__firsthalf--tags`}>
+                  <span>love</span>
+                  <span>love</span>
+                  <span>love</span>
+                  <span>love</span>
+                  <span>sex</span>
+                  <span>violence</span>
+                  <span>love</span>
+                  <span>love</span>
+                  <span>love</span>
+                  <span>love</span>
+                  <span>sex</span>
+                  <span>violence</span>
+                  <span>love</span>
+                  <span>love</span>
+                  <span>love</span>
+                  <span>love</span>
+                  <span>sex</span>
+                  <span>violence</span>
+              </div>
+
               <div className={`videogifphotoview__content__bio__firsthalf--comments`}>
                 {this.returnNumberOfComments()}
 

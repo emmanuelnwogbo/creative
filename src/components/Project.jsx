@@ -80,12 +80,10 @@ class Project extends Component {
         <div className="project__middle">
           <div className="project__middle--buttons">
             <span className="project__middle--buttons-btn-svg">
-              <svg  className="project__middle--buttons-svg">
-                <use xlinkHref="./img/sprite.svg#icon-heart" />
-              </svg>
+              <p>Follow</p>
             </span>
             <span className="project__middle--buttons-btn">
-              <p>Join</p>
+              <p>Join this project</p>
             </span>
           </div>
           <h3 className="project__middle--h3">The Coast of Love</h3>

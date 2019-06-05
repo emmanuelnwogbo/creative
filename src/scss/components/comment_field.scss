@@ -19,7 +19,7 @@
   position: relative;
   padding: 1rem 0;
   border-radius: .3rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   background: transparent;
   border-bottom: 1px solid #ddd;
 
@@ -171,6 +171,53 @@
     &--stat {
       margin-left: 1rem;
       color: #EC008C//#fff;
+    }
+  }
+
+  &__crumbs {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+
+    & span {
+      display: inline-block;
+      margin-right: .5rem;
+      height: .7rem;
+      width: .7rem;
+      border-radius: 50%;
+      background: rgba(53, 59, 72, 0.2);
+    }
+  }
+
+  &__crumbs:hover ~ &__crumbs__options {
+    display: block;
+  }
+
+  &__crumbs__options {
+    position: absolute;
+    right: -11%;
+    width: 10rem;
+    background: #fff;
+    z-index: 9;
+    display: none;
+
+    &:hover {
+      display: block;
+    }
+
+    & span {
+      display: block;
+      text-align: center;
+      padding: .3rem .5rem;
+      cursor: pointer;
+      font-weight: 700;
+      border-bottom: 1px solid #ddd;
+      color: rgba(30, 39, 46,.6);
+
+      &:hover {
+        background: rgba(165, 177, 194,1.0);
+      }
     }
   }
 }
