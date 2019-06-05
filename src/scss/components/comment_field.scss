@@ -9,24 +9,36 @@
 }
 
 .comment__field {
-  position: relative;
-  background: #fff;
-  padding: 1.5rem;
+  //position: relative;
+  //background: #fff;
+  //padding: 1.5rem;
   border-radius: .3rem;
-  font-size: 1.6rem;
   color: rgba(53, 59, 72, 1);
+
+  margin-top: 1rem;
+  position: relative;
+  padding: 1rem 0;
+  border-radius: .3rem;
+  font-size: 1.4rem;
+  background: transparent;
+  border-bottom: 1px solid #ddd;
 
   &--save {
     position: absolute;
     right: 1.5rem;
     top: 1.5rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: rgba(53, 59, 72, 0.5);
+    font-weight: 700;
 
     &-svg {
-      height: 3rem;
-      width: 3rem;
+      height: 1.5rem;
+      width: 1.5rem;
       fill: #EC008C;
       cursor: pointer;
+      margin-right: .5rem;
     }
   }
 
@@ -36,8 +48,10 @@
 
     &--fig {
       border-radius: 50%;
-      width: 7rem;
-      height: 7rem;
+      width: 3rem;
+      height: 3rem;
+      margin-right: 1rem;
+      overflow: hidden;
     }
 
     &--img {

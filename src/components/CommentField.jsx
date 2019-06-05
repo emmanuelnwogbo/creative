@@ -69,11 +69,15 @@ class CommentField extends Component {
       media,
       include_socialIcons
     } = this.props;
+    console.log(comment_likes)
 
     return (
       <div className={`comment__field`}>
         <div className={`comment__field--save`}>
-          <svg className={`comment__field--save-svg`} viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"></path></svg>
+          <svg className={`comment__field--save-svg`}>
+            <use xlinkHref="./img/sprite.svg#icon-heart-outlined" />
+          </svg>
+          <span>{comment_likes && comment_likes.length ? comment_likes.length : ""}</span>
         </div>
         <div className={`comment__field__top`}>
           <figure className={`comment__field__top--fig`}>

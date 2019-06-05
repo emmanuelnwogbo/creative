@@ -3,7 +3,8 @@ import React, { Component, lazy, Suspense } from 'react';
 import Header from './Header';
 import Container from './Container';
 import SignInForm from './SignInForm';
-const Jumbotron = lazy(() => import('./Jumbotron'))
+const Jumbotron = lazy(() => import('./Jumbotron'));
+const VideoGifPhotoView = lazy(() => import('./VideoGifPhotoView'))
 
 //import FormField, CommentField components for development purposes
 import FormField from './FormField';
@@ -13,35 +14,39 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      MobileHeader: false
+      changeVideoGifPhotoViewVisibility: 'none'
     }
   }
 
-  rendermobileHeader = () => {
-    const { MobileHeader } = this.state;
-    if (MobileHeader) {
-      return <MobileHeader />
-    }
-
-    return;
-  }
-
-  componentDidMount() {
-    if (window.matchMedia('(max-width: 1049px)').matches) {
-      import('./Header_Mobile').then(HeaderMobile => {
-        this.setState({ MobileHeader: HeaderMobile.default });
+  toggleVideoGifPhotoViewVisibility = (e) => {
+    const { changeVideoGifPhotoViewVisibility } = this.state;
+    if (changeVideoGifPhotoViewVisibility === 'none') {
+      return this.setState({ 
+        changeVideoGifPhotoViewVisibility: `block` 
+      }, () => {
+        document.getElementsByTagName('body')[0].style.overflowY = `hidden`;
       })
+    }
+
+    if (e.target.classList.contains('videogifphotoview')) {
+      return this.setState({
+        changeVideoGifPhotoViewVisibility: 'none' 
+       }, () => {
+         document.getElementsByTagName('body')[0].style.overflowY = `scroll`;
+       })
     }
   }
 
   render() {
+    const { changeVideoGifPhotoViewVisibility } = this.state;
+    const { toggleVideoGifPhotoViewVisibility } = this;
     return (
       <div className="home">
         <Header />
         <Suspense fallback={<div>loading</div>}>
           <Jumbotron/>
         </Suspense>
-        <Container />
+        <Container toggleVideoGifPhotoViewVisibility={this.toggleVideoGifPhotoViewVisibility}/>
         <form>
           <FormField type="text" name="Firstname" placeholder={'Firstname'}/>
           <FormField type="email" name="Email" placeholder={'Put your email here'}/>
@@ -62,6 +67,12 @@ class Home extends Component {
           state of love during the me too era, pls feel free to check out our preview. 
           The beauty van be found anywhere proverb is not a myth indeed.`}/>
         </div>
+        <Suspense fallback={<div>loading</div>}>
+          <VideoGifPhotoView 
+            changeVideoGifPhotoViewVisibility={changeVideoGifPhotoViewVisibility} 
+            toggleVideoGifPhotoViewVisibility={toggleVideoGifPhotoViewVisibility}
+            mediaType={null}/>
+        </Suspense>
       </div>
     )
   }

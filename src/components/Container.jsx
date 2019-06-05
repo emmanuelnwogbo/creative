@@ -38,7 +38,7 @@ class Container extends Component {
             }}></div>
           </div>
         } key={result}>
-          <Card overlayStyle={
+          <Card toggleVideoGifPhotoViewVisibility={this.props.toggleVideoGifPhotoViewVisibility} overlayStyle={
             rainbowGenerator(
               Math.round(Math.random() * 100), 
               Math.round(Math.random() * 80)
