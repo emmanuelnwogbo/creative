@@ -118,7 +118,10 @@ class Container extends Component {
 
   render() {
     console.log(this.props.label)
-    const { label } = this.props;
+    const {
+      label, toggleProfileViewVisibility
+    } = this.props;
+    
     if (label === 'Home') {
       return (
         <div className="container">
@@ -137,7 +140,7 @@ class Container extends Component {
               }}></div>
             </div>
           }>
-            <Profile />
+            <Profile toggleProfileViewVisibility={toggleProfileViewVisibility}/>
           </Suspense>
           <Suspense fallback={
             <div style={{

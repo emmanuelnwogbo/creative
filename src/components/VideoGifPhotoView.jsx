@@ -24,7 +24,7 @@ class VideoGifPhotoView extends Component {
       return (
         <div className={`videogifphotoview__content__bio__firsthalf--comments--headers`}>
           <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>{comments.length}<span> Response</span></h3>
-          <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>See only creator's comments</h3>
+          <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>See only creator's responses</h3>
         </div>
       )
     }
@@ -76,14 +76,14 @@ class VideoGifPhotoView extends Component {
 
   render() {
     const { 
-      changeVideoGifPhotoViewVisibility, 
+      videoGifPhotoViewVisibility, 
       toggleVideoGifPhotoViewVisibility 
     } = this.props;
 
     const { comments } = this.state;
     return (
       <div className={`videogifphotoview`} style={{
-        display: changeVideoGifPhotoViewVisibility
+        display: videoGifPhotoViewVisibility
       }} onClick={toggleVideoGifPhotoViewVisibility}>
         <div className={`videogifphotoview__content`}>
           <div className={`videogifphotoview__content__top`}>

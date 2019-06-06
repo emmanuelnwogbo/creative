@@ -69,7 +69,6 @@ class CommentField extends Component {
       media,
       include_socialIcons
     } = this.props;
-    console.log(comment_likes)
 
     return (
       <div className={`comment__field`}>

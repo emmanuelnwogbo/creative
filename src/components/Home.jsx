@@ -6,6 +6,7 @@ import SignInForm from './SignInForm';
 const Jumbotron = lazy(() => import('./Jumbotron'));
 const VideoGifPhotoView = lazy(() => import('./VideoGifPhotoView'))
 const Project = lazy(() => import('./Project'));
+const ProfileView = lazy(() => import('./ProfileView'));
 
 //import FormField, CommentField components for development purposes
 import FormField from './FormField';
@@ -15,15 +16,49 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      changeVideoGifPhotoViewVisibility: 'none'
+      videoGifPhotoViewVisibility: 'none',
+      profileViewVisibility: 'none'
+    }
+  }
+
+  toggleProfileViewVisibility = (e) => {
+    const { profileViewVisibility } = this.state;
+    if (e.target.classList.contains('profile__top--btn') || 
+        e.target.classList.contains('profile__top--btn-svg') ||
+        e.target.classList.contains('profile__top--btn-body') ||
+        e.target.classList.contains('profile__top--btn-text')) {
+          return;
+    }
+
+    if (e.target.classList.contains('profile__save--btn') || 
+        e.target.classList.contains('profile__save--btn-svg') ||
+        e.target.classList.contains('profile__save--span') ||
+        e.target.classList.contains('profile__save--text')) {
+          return;
+    }
+
+    if (profileViewVisibility === 'none') {
+      return this.setState({ 
+        profileViewVisibility: `block` 
+      }, () => {
+        document.getElementsByTagName('body')[0].style.overflowY = `hidden`;
+      })
+    }
+
+    if (e.target.classList.contains('profileview')) {
+      return this.setState({
+        profileViewVisibility: 'none' 
+       }, () => {
+         document.getElementsByTagName('body')[0].style.overflowY = `scroll`;
+       })
     }
   }
 
   toggleVideoGifPhotoViewVisibility = (e) => {
-    const { changeVideoGifPhotoViewVisibility } = this.state;
-    if (changeVideoGifPhotoViewVisibility === 'none') {
+    const { videoGifPhotoViewVisibility } = this.state;
+    if (videoGifPhotoViewVisibility === 'none') {
       return this.setState({ 
-        changeVideoGifPhotoViewVisibility: `block` 
+        videoGifPhotoViewVisibility: `block` 
       }, () => {
         document.getElementsByTagName('body')[0].style.overflowY = `hidden`;
       })
@@ -31,7 +66,7 @@ class Home extends Component {
 
     if (e.target.classList.contains('videogifphotoview')) {
       return this.setState({
-        changeVideoGifPhotoViewVisibility: 'none' 
+        videoGifPhotoViewVisibility: 'none' 
        }, () => {
          document.getElementsByTagName('body')[0].style.overflowY = `scroll`;
        })
@@ -39,15 +74,24 @@ class Home extends Component {
   }
 
   render() {
-    const { changeVideoGifPhotoViewVisibility } = this.state;
-    const { toggleVideoGifPhotoViewVisibility } = this;
+    const {
+      videoGifPhotoViewVisibility,
+      profileViewVisibility
+    } = this.state;
+    const {
+      toggleVideoGifPhotoViewVisibility,
+      toggleProfileViewVisibility
+    } = this;
     return (
       <div className="home">
         <Header />
         <Suspense fallback={<div>loading</div>}>
           <Jumbotron/>
         </Suspense>
-        <Container toggleVideoGifPhotoViewVisibility={this.toggleVideoGifPhotoViewVisibility}/>
+        <Container 
+        toggleVideoGifPhotoViewVisibility={toggleVideoGifPhotoViewVisibility}
+        toggleProfileViewVisibility={toggleProfileViewVisibility}
+        />
         <form>
           <FormField type="text" name="Firstname" placeholder={'Firstname'}/>
           <FormField type="email" name="Email" placeholder={'Put your email here'}/>
@@ -70,9 +114,15 @@ class Home extends Component {
         </div>
         <Suspense fallback={<div>loading</div>}>
           <VideoGifPhotoView 
-            changeVideoGifPhotoViewVisibility={changeVideoGifPhotoViewVisibility} 
+            videoGifPhotoViewVisibility={videoGifPhotoViewVisibility} 
             toggleVideoGifPhotoViewVisibility={toggleVideoGifPhotoViewVisibility}
             mediaType={null}/>
+        </Suspense>
+        <Suspense fallback={<div>loading</div>}>
+          <ProfileView
+            profileViewVisibility={profileViewVisibility}
+            toggleProfileViewVisibility={toggleProfileViewVisibility}
+          />
         </Suspense>
         <Suspense fallback={<div>loading</div>}>
           <Project />
