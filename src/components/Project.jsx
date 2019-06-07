@@ -47,26 +47,7 @@ class Project extends Component {
     })
   }
 
-  renderPhotosPreviews = () => {
-    const { photos } = this.state;
-    return photos.map(photo => {
-      if (photos[0] === photo) {
-        return (
-          <figure key={photo} className="project__bottom--gallery-fig">
-            <img src="./img/project.jpg" className="project__bottom--gallery-img"/>
-          </figure>
-        )
-      }
-      return (
-        <figure key={photo} className="project__bottom--gallery-fig">
-          <img src="./img/test2.jpg" className="project__bottom--gallery-img"/>
-        </figure>
-      )
-    })
-  }
-
   render() {
-    const { photos } = this.state;
     return (
       <div className="project">
         <div className="project__top">
@@ -91,19 +72,6 @@ class Project extends Component {
             <p>We're making a short film that describes the 
             state of love during the me too era, pls feel free to check out our preview. 
             The beauty van be found anywhere proverb is not a myth indeed.</p>
-          </div>
-          <div className="project__middle__people">
-            <h4 className="project__middle__people--h4">People involved in this Project</h4>
-            <div className="project__middle__people--photos">
-              {this.renderPeopleInvolved()}
-            </div>
-          </div>
-        </div>
-
-        <div className="project__bottom">
-          <h5 className="project__bottom--h5"><span>{photos.length}</span>media files</h5>
-          <div className="project__bottom--gallery">
-            {this.renderPhotosPreviews()}
           </div>
         </div>
       </div>

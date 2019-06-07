@@ -307,6 +307,7 @@
             border: .5rem solid#fff;
             flex-shrink: 0;
             margin-right: 1rem;
+            margin-bottom: 1rem;
             cursor: pointer;
           }
 
@@ -317,6 +318,42 @@
             display: block;
           }
         }
+      }
+    }
+
+    &__peopleinvolved {
+      margin-top: 2rem;
+
+      & h3 {
+        font-weight: 700;
+        padding: 1rem 0;
+        color: #EC008C;
+      }
+
+      &--photos {
+        display: flex;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+      }
+
+      & figure {
+        height: 6rem;
+        width: 6rem;
+        margin-right: .5rem;
+        margin-bottom: .5rem;
+        border-radius: 50%;
+        flex-shrink: 0;
+        border: .5rem #fff solid;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 0px 1px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.1)
+      }
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;       
       }
     }
   }

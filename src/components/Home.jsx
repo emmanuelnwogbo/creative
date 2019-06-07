@@ -1,13 +1,15 @@
 import React, { Component, lazy, Suspense } from 'react';
 
 import Header from './Header';
-import Container from './Container';
+import Explore_Container from './Explore_Container';
 import SignInForm from './SignInForm';
 const Jumbotron = lazy(() => import('./Jumbotron'));
 const VideoGifPhotoView = lazy(() => import('./VideoGifPhotoView'))
 const Project = lazy(() => import('./Project'));
 const ProfileView = lazy(() => import('./ProfileView'));
 const JobView = lazy(() => import('./JobView'));
+const Profile = lazy(() => import('./Profile'));
+const Job = lazy(() => import('./Job'))
 
 //import FormField, CommentField components for development purposes
 import FormField from './FormField';
@@ -104,7 +106,7 @@ class Home extends Component {
         <Suspense fallback={<div>loading</div>}>
           <Jumbotron/>
         </Suspense>
-        <Container 
+        <Explore_Container 
         toggleVideoGifPhotoViewVisibility={toggleVideoGifPhotoViewVisibility}
         toggleProfileViewVisibility={toggleProfileViewVisibility}
         toggleJobViewVisibility={toggleJobViewVisibility}
@@ -149,6 +151,12 @@ class Home extends Component {
         </Suspense>
         <Suspense fallback={<div>loading</div>}>
           <Project />
+        </Suspense>
+        <Suspense fallback={<div>loading</div>}>
+          <Profile toggleProfileViewVisibility={toggleProfileViewVisibility}/>
+        </Suspense>
+        <Suspense fallback={<div>loading</div>}>
+          <Job previewMedia={"./img/project.jpg"} toggleJobViewVisibility={toggleJobViewVisibility}/>
         </Suspense>
       </div>
     )

@@ -224,6 +224,27 @@ class VideoGifPhotoView extends Component {
                     <img className={`videogifphotoview__content__bio__secondhalf__works--img`} src={`./img/test2.jpg`}/>
                   </figure>
                 </div>
+
+                <div className={`videogifphotoview__content__peopleinvolved`}>
+                  <h3>People involved in this Project</h3>
+                  <div className={`videogifphotoview__content__peopleinvolved--photos`}>
+                    <figure>
+                      <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/q_33/v1559594290/female-actress_kr0c1r.jpg`}/>
+                    </figure>
+                    <figure>
+                      <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/q_33/v1559594290/female-actress_kr0c1r.jpg`}/>
+                    </figure>
+                    <figure>
+                      <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/q_33/v1559594290/female-actress_kr0c1r.jpg`}/>
+                    </figure>
+                    <figure>
+                      <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/q_33/v1559594290/female-actress_kr0c1r.jpg`}/>
+                    </figure>
+                    <figure>
+                      <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/q_33/v1559594290/female-actress_kr0c1r.jpg`}/>
+                    </figure>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
