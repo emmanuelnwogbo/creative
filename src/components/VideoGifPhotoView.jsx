@@ -1,7 +1,8 @@
 import React, { Component, lazy, Suspense } from 'react';
 
 import '../scss/components/videogifphotoview.scss'
-const CommentField = lazy(() => import('./CommentField'))
+const CommentField = lazy(() => import('./CommentField'));
+const MediaDisplay = lazy(() => import('./MediaDisplay'));
 
 class VideoGifPhotoView extends Component {
   constructor(props) {
@@ -82,7 +83,7 @@ class VideoGifPhotoView extends Component {
 
     const { comments } = this.state;
     return (
-      <div className={`videogifphotoview`} style={{
+      <div className={`videogifphotoview`} id={`videogifphotoview`} style={{
         display: videoGifPhotoViewVisibility
       }} onClick={toggleVideoGifPhotoViewVisibility}>
         <div className={`videogifphotoview__content`}>
@@ -114,7 +115,11 @@ class VideoGifPhotoView extends Component {
           </div>
 
           <div className={`videogifphotoview__content__media`}>
-            {/*write a separate component to handle the video, gif, photo display*/}
+            <Suspense fallback={<div>loading</div>}>
+              <MediaDisplay 
+              items={[1, 2, 3, 4, 5, 6]}
+              mediaDisplaySwiperParent={`videogifphotoview`}/>
+            </Suspense>
           </div>
           
           <div className={`videogifphotoview__content__bio`}>

@@ -1,0 +1,46 @@
+.mediadisplay {
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  //background: red;
+
+  &__swipe {
+    position: relative;
+  }
+
+  &__swipe__wrap {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+
+    &--item:nth-child(1) {
+      background: blue;
+    }
+
+    &--item:nth-child(2) {
+      background: orange;
+    }
+
+    &--item:nth-child(3) {
+      background: pink;
+    }
+
+    &--item:nth-child(4) {
+      background: indigo;
+    }
+
+    &--item:nth-child(5) {
+      background: black;
+    }
+
+    &--item:nth-child(6) {
+      background: blue;
+    }
+
+    &--item {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+    }
+  }
+}
