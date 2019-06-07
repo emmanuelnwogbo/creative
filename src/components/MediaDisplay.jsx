@@ -71,6 +71,13 @@ class MediaDisplay extends Component {
     const observer = new MutationObserver(() => {
       if (targetNode.style.display === 'none') {
         window.removeEventListener('keydown', this.initControls, true);
+        this.setState({ 
+          currentId: 1,
+          swipedRight: false 
+        }, () => {
+          const { currentId } = this.state;
+          document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(0)`
+        })
       }
 
       if (targetNode.style.display !== 'none') {
