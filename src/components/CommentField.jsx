@@ -74,7 +74,7 @@ class CommentField extends Component {
       <div className={`comment__field`}>
         <div className={`comment__field--save`}>
           <svg className={`comment__field--save-svg`}>
-            <use xlinkHref="./img/sprite.svg#icon-heart-outlined" />
+            <use xlinkHref="./img/sprite.svg#icon-heart" />
           </svg>
           <span>{comment_likes && comment_likes.length ? comment_likes.length : ""}</span>
         </div>
@@ -95,6 +95,7 @@ class CommentField extends Component {
           </div>
           {this.renderIfIncludesMedia(media)}
           {this.renderSocialIcons(include_socialIcons)}
+          <div className={`comment__field__like`}><span><p>Like</p></span></div>
         </div>
         <div className={`comment__field__crumbs`}>
           <span></span>

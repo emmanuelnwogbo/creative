@@ -7,6 +7,7 @@ const Jumbotron = lazy(() => import('./Jumbotron'));
 const VideoGifPhotoView = lazy(() => import('./VideoGifPhotoView'))
 const Project = lazy(() => import('./Project'));
 const ProfileView = lazy(() => import('./ProfileView'));
+const JobView = lazy(() => import('./JobView'));
 
 //import FormField, CommentField components for development purposes
 import FormField from './FormField';
@@ -17,8 +18,21 @@ class Home extends Component {
     super(props);
     this.state = {
       videoGifPhotoViewVisibility: 'none',
-      profileViewVisibility: 'none'
+      profileViewVisibility: 'none',
+      jobViewVisibility: 'none'
     }
+  }
+
+  toggleJobViewVisibility = (e) => {
+    if (e.target.classList.contains('jobview')) {
+      return this.setState({ jobViewVisibility: 'none' }, () => {
+        document.getElementsByTagName('body')[0].style.overflowY = `scroll`;
+      })
+    }
+
+    this.setState({ jobViewVisibility: 'block' }, () => {
+      document.getElementsByTagName('body')[0].style.overflowY = `hidden`;
+    });
   }
 
   toggleProfileViewVisibility = (e) => {
@@ -76,11 +90,13 @@ class Home extends Component {
   render() {
     const {
       videoGifPhotoViewVisibility,
-      profileViewVisibility
+      profileViewVisibility,
+      jobViewVisibility
     } = this.state;
     const {
       toggleVideoGifPhotoViewVisibility,
-      toggleProfileViewVisibility
+      toggleProfileViewVisibility,
+      toggleJobViewVisibility
     } = this;
     return (
       <div className="home">
@@ -91,6 +107,7 @@ class Home extends Component {
         <Container 
         toggleVideoGifPhotoViewVisibility={toggleVideoGifPhotoViewVisibility}
         toggleProfileViewVisibility={toggleProfileViewVisibility}
+        toggleJobViewVisibility={toggleJobViewVisibility}
         />
         <form>
           <FormField type="text" name="Firstname" placeholder={'Firstname'}/>
@@ -122,6 +139,12 @@ class Home extends Component {
           <ProfileView
             profileViewVisibility={profileViewVisibility}
             toggleProfileViewVisibility={toggleProfileViewVisibility}
+          />
+        </Suspense>
+        <Suspense fallback={<div>loading</div>}>
+          <JobView 
+          toggleJobViewVisibility={toggleJobViewVisibility}
+          jobViewVisibility={jobViewVisibility}
           />
         </Suspense>
         <Suspense fallback={<div>loading</div>}>

@@ -23,7 +23,7 @@ class VideoGifPhotoView extends Component {
     if (comments.length < 2) {
       return (
         <div className={`videogifphotoview__content__bio__firsthalf--comments--headers`}>
-          <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>{comments.length}<span> Response</span></h3>
+          <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}><span>All Response</span></h3>
           <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>See only creator's responses</h3>
         </div>
       )
@@ -32,7 +32,7 @@ class VideoGifPhotoView extends Component {
     if (comments.length > 1) {
       return (
         <div className={`videogifphotoview__content__bio__firsthalf--comments--headers`}>
-          <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>{comments.length}<span> Responses</span></h3>
+          <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}><span>All Responses</span></h3>
           <h3 className={`videogifphotoview__content__bio__firsthalf--comments--h3`}>See only creator's comments</h3>
         </div>
       )

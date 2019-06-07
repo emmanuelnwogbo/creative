@@ -119,7 +119,9 @@ class Container extends Component {
   render() {
     console.log(this.props.label)
     const {
-      label, toggleProfileViewVisibility
+      label, 
+      toggleProfileViewVisibility,
+      toggleJobViewVisibility
     } = this.props;
     
     if (label === 'Home') {
@@ -155,22 +157,7 @@ class Container extends Component {
               }}></div>
             </div>
           }>
-            <Job />
-          </Suspense>
-          <Suspense fallback={
-            <div style={{
-              background: 'rgba(0, 0, 0, 0.1)',
-              borderRadius: '.5rem'
-            }}>
-              <div style={{
-                height: '20rem',
-              }}></div>
-              <div style={{
-                padding: '2rem 1rem'
-              }}></div>
-            </div>
-          }>
-            <Job previewMedia={"./img/project.jpg"}/>
+            <Job previewMedia={"./img/project.jpg"} toggleJobViewVisibility={toggleJobViewVisibility}/>
           </Suspense>
         </div>
       )

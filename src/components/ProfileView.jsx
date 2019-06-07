@@ -65,7 +65,50 @@ class ProfileView extends Component {
             <h5 className={`profileview__content__description__h5-2`}>{`About Samus`}</h5>
             <span><p>{`Samus Aran was destined to be a filmmaker. In fact, he grew up just a stone's throw from the house that served as the Corleone Home in the Academy-Award winning film, "The Godfather." He also watched the Oscars intently as his cousin Danny Aiello was Nominated for Best Supporting Actor in 1990. Eventually, it was time for Borowski to get in the game. After selling his first option in 1999 and attending the Cannes Film Festival, Borowski produced 10 films, including 4 shorts. Among them, he directed and produced the film, "Night Club," Academy-Award Winner Ernie Borgnine's final theatrical feature. It also starred Natasha Lyonne, Paul Sorvino and Academy-Award Nominee Sally Kellerman and was one of the final films in Mickey Rooney’s legendary career. "Night Club," won a whopping 16 awards over 9 film festivals. Before that, Borowski wrote, produced and directed, "The Mandala Maker", a short for Academy-Award consideration in 2010 that went on to qualify for the Oscars in the Live-Action Short category. It garnered 7 awards over 8 festivals, including 3 in the Accolade Competition (for Direction, Short Film and Lead Actress). It also played in the prestigious Film Columbia Festival, alongside 2010 Academy-Award Best Picture nominees, "Precious" and "Up In The Air." Borowski wrote and produced the feature-length documentary, "Creature Feature: 60 Years of the Gill-Man", which featured Academy-Award Winner Benicio Del Toro and is narrated by 3-time Emmy-winner Keith David. Recently, Borowski produced the feature film, "A Place For Heroes," in Iowa starring the aforementioned Sorvino and Kellerman, among others, and also directed the film, "Maniac," a year later.`}</p></span>
           </div>
-
+          
+          {/*below is for personal photos uploaded by the owner of the profile*/}
+          <div className={`profileview__content__projects`}>
+            <h5 className={`profileview__content__description__h5-3`}>{`Photos`}</h5>
+            <div className={`profileview__content__projects__content`}>
+              <figure className={`profileview__content__projects__fig`}>
+                <img className={`profileview__content__projects__fig--img`} src={`./img/test2.jpg`}/>
+                <div className={`profileview__content__projects__fig--details`}>
+                  {/*<span>Name of project</span>*/}
+                </div>
+              </figure>
+              <figure className={`profileview__content__projects__fig`}>
+                <img className={`profileview__content__projects__fig--img`} src={`./img/test2.jpg`}/>
+                <div className={`profileview__content__projects__fig--details`}>
+                  {/*<span>Name of project</span>8*/}
+                </div>
+              </figure>
+              <figure className={`profileview__content__projects__fig`}>
+                <img className={`profileview__content__projects__fig--img`} src={`./img/test2.jpg`}/>
+                <div className={`profileview__content__projects__fig--details`}>
+                  {/*<span>Name of project</span>8*/}
+                </div>
+              </figure>
+              <figure className={`profileview__content__projects__fig`}>
+                <img className={`profileview__content__projects__fig--img`} src={`./img/test2.jpg`}/>
+                <div className={`profileview__content__projects__fig--details`}>
+                  {/*<span>Name of project</span>*/}
+                </div>
+              </figure>
+              <figure className={`profileview__content__projects__fig`}>
+                <img className={`profileview__content__projects__fig--img`} src={`./img/test2.jpg`}/>
+                <div className={`profileview__content__projects__fig--details`}>
+                  {/*<span>Name of project</span>8*/}
+                </div>
+              </figure>
+              <figure className={`profileview__content__projects__fig`}>
+                <img className={`profileview__content__projects__fig--img`} src={`./img/test2.jpg`}/>
+                <div className={`profileview__content__projects__fig--details`}>
+                  {/*<span>Name of project</span>8*/}
+                </div>
+              </figure>
+            </div>
+          </div>
+        {/*below is for projects, photos, video, gif, sounds uploaded by the owner of the profile*/}
           <div className={`profileview__content__projects`}>
             <h5 className={`profileview__content__description__h5-3`}>{`Works by Samus`}</h5>
             <div className={`profileview__content__projects__content`}>

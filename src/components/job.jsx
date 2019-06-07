@@ -20,9 +20,12 @@ class Job extends Component {
   }
 
   render() {
-    const { previewMedia } = this.props;
+    const { 
+      previewMedia,
+      toggleJobViewVisibility
+    } = this.props;
     return (
-      <div className={`job`}>
+      <div className={`job`} onClick={toggleJobViewVisibility}>
         <span className={`job--btn`}>View</span>
         {this.renderPreviewMedia(previewMedia)}
         <div className={`job--text`}>
