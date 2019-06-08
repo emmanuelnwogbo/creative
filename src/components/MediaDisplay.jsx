@@ -63,6 +63,8 @@ class MediaDisplay extends Component {
     if (event.key === `ArrowLeft`) {
       this.swipeLeft()
     }
+
+    //add media queries to initialise swipe functionality for mobile here
   }
 
   componentDidMount() {
@@ -97,9 +99,6 @@ class MediaDisplay extends Component {
           <div 
           className={'mediadisplay__swipe__wrap--item'}
           id={`mediadisplay-${id}`}
-          style={{
-            transition: `all ease-in-out`
-          }}
           key={id}>{item}</div>
         )
       })
@@ -110,8 +109,9 @@ class MediaDisplay extends Component {
     return (
       <div id={'mediadisplay__swiper'}  className={`mediadisplay`}>
         <div className={`mediadisplay__swipe`}>
-          <div className={'mediadisplay__swipe__wrap'} style={{
-            transition: `all ease-in-out`
+          <div className={'mediadisplay__swipe__wrap'} 
+          style={{
+            transition: `all .1s ease-in-out`
           }}>
             {this.renderItems()}
           </div>

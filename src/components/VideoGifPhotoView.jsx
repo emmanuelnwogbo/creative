@@ -3,6 +3,7 @@ import React, { Component, lazy, Suspense } from 'react';
 import '../scss/components/videogifphotoview.scss'
 const CommentField = lazy(() => import('./CommentField'));
 const MediaDisplay = lazy(() => import('./MediaDisplay'));
+const Video = lazy(() => import('./Video'));
 
 class VideoGifPhotoView extends Component {
   constructor(props) {
@@ -117,7 +118,21 @@ class VideoGifPhotoView extends Component {
           <div className={`videogifphotoview__content__media`}>
             <Suspense fallback={<div>loading</div>}>
               <MediaDisplay 
-              items={[1, 2, 3, 4, 5, 6]}
+              items={[
+                <figure className={`videogifphotoview__content__media__fig`}>
+                  <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/v1559594288/clown_ouhykp.jpg`}/>
+                </figure>,
+                <figure className={`videogifphotoview__content__media__fig`}>
+                  <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/v1559594265/guy-in-camera_nmfmcl.jpg`}/>
+                </figure>,
+                <figure className={`videogifphotoview__content__media__fig`}>
+                  <img src={`./img/jump.gif`}/>
+                </figure>,
+                <figure className={`videogifphotoview__content__media__fig`}>
+                    <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/v1559594249/drone-1_aslimq.jpg`}/>
+                </figure>,
+                <Video />
+              ]}
               mediaDisplaySwiperParent={`videogifphotoview`}/>
             </Suspense>
           </div>

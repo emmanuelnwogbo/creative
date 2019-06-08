@@ -112,10 +112,21 @@
 
     &__media {
       position: relative;
-      min-height: 60rem;
-      background: green;
-      margin: 0 auto;
-      //use max-width for the actual media === 100%
+      min-height: 30rem;
+      margin: 0 auto;    
+      margin-bottom: 2rem;
+
+      &__fig {
+        overflow: hidden;
+        height: 70rem;
+
+        & img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      }
     }
 
     &__bio {
