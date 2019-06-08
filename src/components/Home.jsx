@@ -4,7 +4,6 @@ import Header from './Header';
 import Explore_Container from './Explore_Container';
 import SignInForm from './SignInForm';
 const Jumbotron = lazy(() => import('./Jumbotron'));
-const VideoGifPhotoView = lazy(() => import('./VideoGifPhotoView'))
 const Project = lazy(() => import('./Project'));
 const ProfileView = lazy(() => import('./ProfileView'));
 const JobView = lazy(() => import('./JobView'));
@@ -70,33 +69,12 @@ class Home extends Component {
     }
   }
 
-  toggleVideoGifPhotoViewVisibility = (e) => {
-    const { videoGifPhotoViewVisibility } = this.state;
-    if (videoGifPhotoViewVisibility === 'none') {
-      return this.setState({ 
-        videoGifPhotoViewVisibility: `block` 
-      }, () => {
-        document.getElementsByTagName('body')[0].style.overflowY = `hidden`;
-      })
-    }
-
-    if (e.target.classList.contains('videogifphotoview')) {
-      return this.setState({
-        videoGifPhotoViewVisibility: 'none' 
-       }, () => {
-         document.getElementsByTagName('body')[0].style.overflowY = `scroll`;
-       })
-    }
-  }
-
   render() {
     const {
-      videoGifPhotoViewVisibility,
       profileViewVisibility,
       jobViewVisibility
     } = this.state;
     const {
-      toggleVideoGifPhotoViewVisibility,
       toggleProfileViewVisibility,
       toggleJobViewVisibility
     } = this;
@@ -107,7 +85,6 @@ class Home extends Component {
           <Jumbotron/>
         </Suspense>
         <Explore_Container 
-        toggleVideoGifPhotoViewVisibility={toggleVideoGifPhotoViewVisibility}
         toggleProfileViewVisibility={toggleProfileViewVisibility}
         toggleJobViewVisibility={toggleJobViewVisibility}
         />
@@ -131,12 +108,6 @@ class Home extends Component {
           state of love during the me too era, pls feel free to check out our preview. 
           The beauty van be found anywhere proverb is not a myth indeed.`}/>
         </div>
-        <Suspense fallback={<div>loading</div>}>
-          <VideoGifPhotoView 
-            videoGifPhotoViewVisibility={videoGifPhotoViewVisibility} 
-            toggleVideoGifPhotoViewVisibility={toggleVideoGifPhotoViewVisibility}
-            mediaType={null}/>
-        </Suspense>
         <Suspense fallback={<div>loading</div>}>
           <ProfileView
             profileViewVisibility={profileViewVisibility}

@@ -6,39 +6,41 @@ class MediaDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentId: 1,
+      currentId: null,
+      translateValue: null,
       swipedRight: false
     }
   }
 
   swipeRight = () => {
     const { 
+      translateValue,
       currentId
     } = this.state;
 
     const { items } = this.props;
 
-    if (!this.state.swipedRight && this.state.currentId < items.length-1) {
-      document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${currentId}00%)`;
+    if (!this.state.swipedRight && this.state.translateValue < items.length-1) {
+      document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${translateValue}00%)`;
       return this.setState({ swipedRight: true });
     }
 
-    if (this.state.currentId < items.length-1 && this.state.swipedRight) {
+    if (this.state.translateValue < items.length-1 && this.state.swipedRight) {
       return this.setState(prevState => ({ 
-        currentId: prevState.currentId+=1
+        translateValue: prevState.translateValue+=1
       }), () => {
-        const { currentId } = this.state;
-        document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${currentId}00%)`
+        const { translateValue } = this.state;
+        document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${translateValue}00%)`
       })
     }
   }
 
   swipeLeft = () => {
-    const { 
+    const {
       currentId
     } = this.state;
 
-    if (this.state.currentId === 1) {
+    if (this.state.translateValue === 1) {
       this.setState({ swipedRight: false });
       return document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(0)`
     }
@@ -46,11 +48,11 @@ class MediaDisplay extends Component {
     if (this.state.swipedRight) {
       return this.setState(prevState => {
         return {
-          currentId: prevState.currentId-=1
+          translateValue: prevState.translateValue-=1
         }
       }, () => {
-        const { currentId } = this.state;
-        document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${currentId}00%)`
+        const { currentId, translateValue } = this.state;
+        document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${translateValue}00%)`
       })
     }
   }
@@ -68,38 +70,47 @@ class MediaDisplay extends Component {
   }
 
   componentDidMount() {
-    const { mediaDisplaySwiperParent } = this.props;
-    const targetNode = document.getElementById(mediaDisplaySwiperParent);
-    const observer = new MutationObserver(() => {
-      if (targetNode.style.display === 'none') {
-        window.removeEventListener('keydown', this.initControls, true);
-        this.setState({ 
-          currentId: 1,
-          swipedRight: false 
-        }, () => {
-          const { currentId } = this.state;
-          document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(0)`
-        })
-      }
+    const {
+      items, 
+      videoGifPhotoViewVisibility 
+    } = this.props;
+    console.log(videoGifPhotoViewVisibility)
+    this.setState({ 
+      currentId: items[0].props.id,
+      translateValue: 1,
+      swipedRight: false 
+    })
+  }
 
-      if (targetNode.style.display !== 'none') {
-        window.addEventListener('keydown', this.initControls, true);
-      }
-    });
-    observer.observe(targetNode, { attributes: true, childList: true });
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.videoGifPhotoViewVisibility === `none`) {
+      const { currentId } = this.state;
+      window.removeEventListener('keydown', this.initControls, true);
+      document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(0)`;
+      this.reset();
+    }
+
+    if (nextProps.videoGifPhotoViewVisibility !== `none`) {
+      window.addEventListener('keydown', this.initControls, true);
+    }
+  }
+
+  reset = () => {
+    this.setState({
+      translateValue: 1,
+      swipedRight: false
+    })
   }
 
   renderItems = () => {
     const { items } = this.props;
-    let id = 0;
     if (items) {
       return items.map(item => {
-        id+=1;
         return (
           <div 
           className={'mediadisplay__swipe__wrap--item'}
-          id={`mediadisplay-${id}`}
-          key={id}>{item}</div>
+          id={`mediadisplay-${item.props.id}`}
+          key={item.props.id}>{item}</div>
         )
       })
     }

@@ -79,12 +79,13 @@ class VideoGifPhotoView extends Component {
   render() {
     const { 
       videoGifPhotoViewVisibility, 
-      toggleVideoGifPhotoViewVisibility 
+      toggleVideoGifPhotoViewVisibility,
+      cardId
     } = this.props;
-
+    console.log(cardId)
     const { comments } = this.state;
     return (
-      <div className={`videogifphotoview`} id={`videogifphotoview`} style={{
+      <div className={`videogifphotoview`} id={cardId} style={{
         display: videoGifPhotoViewVisibility
       }} onClick={toggleVideoGifPhotoViewVisibility}>
         <div className={`videogifphotoview__content`}>
@@ -119,21 +120,22 @@ class VideoGifPhotoView extends Component {
             <Suspense fallback={<div>loading</div>}>
               <MediaDisplay 
               items={[
-                <figure className={`videogifphotoview__content__media__fig`}>
+                <figure id={'yugry'} className={`videogifphotoview__content__media__fig`}>
                   <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/v1559594288/clown_ouhykp.jpg`}/>
                 </figure>,
-                <figure className={`videogifphotoview__content__media__fig`}>
+                <figure id={'yuggry'} className={`videogifphotoview__content__media__fig`}>
                   <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/v1559594265/guy-in-camera_nmfmcl.jpg`}/>
                 </figure>,
-                <figure className={`videogifphotoview__content__media__fig`}>
+                <figure id={'yupnvgry'} className={`videogifphotoview__content__media__fig`}>
                   <img src={`./img/jump.gif`}/>
                 </figure>,
-                <figure className={`videogifphotoview__content__media__fig`}>
+                <figure id={'yugrhfjgcny'} className={`videogifphotoview__content__media__fig`}>
                     <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/v1559594249/drone-1_aslimq.jpg`}/>
                 </figure>,
-                <Video />
+                <Video id={'yughhfrhfjgcny'}/>
               ]}
-              mediaDisplaySwiperParent={`videogifphotoview`}/>
+              mediaDisplaySwiperParent={cardId}
+              videoGifPhotoViewVisibility={videoGifPhotoViewVisibility}/>
             </Suspense>
           </div>
           

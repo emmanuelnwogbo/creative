@@ -1,13 +1,42 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import '../scss/components/card.scss'
+const VideoGifPhotoView = lazy(() => import('./VideoGifPhotoView'))
 
 class Card extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = {
+      videoGifPhotoViewVisibility: 'none',
+    }
+  }
+
+  toggleVideoGifPhotoViewVisibility = (e) => {
+    const { videoGifPhotoViewVisibility } = this.state;
+    if (videoGifPhotoViewVisibility === 'none') {
+      return this.setState({ 
+        videoGifPhotoViewVisibility: `block` 
+      }, () => {
+        document.getElementsByTagName('body')[0].style.overflowY = `hidden`;
+      })
+    }
+
+    if (e.target.classList.contains('videogifphotoview')) {
+      return this.setState({
+        videoGifPhotoViewVisibility: 'none' 
+       }, () => {
+         document.getElementsByTagName('body')[0].style.overflowY = `scroll`;
+       })
+    }
   }
 
   render() {
-    const { toggleVideoGifPhotoViewVisibility } = this.props;
+    const {
+      videoGifPhotoViewVisibility
+    } = this.state;
+    const {
+      toggleVideoGifPhotoViewVisibility
+    } = this;
+    const { cardId } = this.props;
     return (
       <div className="card" onClick={toggleVideoGifPhotoViewVisibility}>
         <div className="card--type">
@@ -50,6 +79,13 @@ class Card extends Component {
             <span></span>
           </span>
         </div>
+        <Suspense fallback={<div>loading</div>}>
+          <VideoGifPhotoView 
+            cardId={`${cardId}`}
+            videoGifPhotoViewVisibility={videoGifPhotoViewVisibility} 
+            toggleVideoGifPhotoViewVisibility={toggleVideoGifPhotoViewVisibility}
+            mediaType={null}/>
+        </Suspense>
       </div>
     )
   }

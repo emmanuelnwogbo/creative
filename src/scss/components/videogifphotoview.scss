@@ -7,6 +7,7 @@
   height: 100%;
   position: fixed;
   overflow-y: scroll;
+  background: #f4f4f4;
 
   &__content {
     margin: 2rem auto;
@@ -15,6 +16,8 @@
     border-radius: .5rem;
     padding: 2rem 0;
     font-size: 1.6rem;
+    width: 70%;
+    background: #fff;
 
     &__top {
       position: relative;
