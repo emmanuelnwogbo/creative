@@ -82,7 +82,6 @@ class VideoGifPhotoView extends Component {
       toggleVideoGifPhotoViewVisibility,
       cardId
     } = this.props;
-    console.log(cardId)
     const { comments } = this.state;
     return (
       <div className={`videogifphotoview`} id={cardId} style={{
@@ -123,6 +122,9 @@ class VideoGifPhotoView extends Component {
                 <figure id={'yugry'} className={`videogifphotoview__content__media__fig`}>
                   <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/v1559594288/clown_ouhykp.jpg`}/>
                 </figure>,
+                <Suspense id={'jhghfgvfcvbv'} fallback={<div>loading</div>}>
+                  <Video id={'jhghfgvfcvbv'}/>
+                </Suspense>,
                 <figure id={'yuggry'} className={`videogifphotoview__content__media__fig`}>
                   <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/v1559594265/guy-in-camera_nmfmcl.jpg`}/>
                 </figure>,
@@ -132,7 +134,9 @@ class VideoGifPhotoView extends Component {
                 <figure id={'yugrhfjgcny'} className={`videogifphotoview__content__media__fig`}>
                     <img src={`https://res.cloudinary.com/dxlhzerlq/image/upload/v1559594249/drone-1_aslimq.jpg`}/>
                 </figure>,
-                <Video id={'yughhfrhfjgcny'}/>
+                <Suspense id={'yughhfrhfjgcny'} fallback={<div>loading</div>}>
+                  <Video id={'yughhfrhfjgcny'}/>
+                </Suspense>
               ]}
               mediaDisplaySwiperParent={cardId}
               videoGifPhotoViewVisibility={videoGifPhotoViewVisibility}/>

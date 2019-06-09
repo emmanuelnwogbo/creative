@@ -69,6 +69,10 @@ class Home extends Component {
     }
   }
 
+  componentDidMount() {
+    window.players = [];
+  }
+
   render() {
     const {
       profileViewVisibility,

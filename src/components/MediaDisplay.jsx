@@ -8,7 +8,8 @@ class MediaDisplay extends Component {
     this.state = {
       currentId: null,
       translateValue: null,
-      swipedRight: false
+      swipedRight: false,
+      mediaPlaying: false
     }
   }
 
@@ -19,6 +20,11 @@ class MediaDisplay extends Component {
     } = this.state;
 
     const { items } = this.props;
+    const playingMedia = window.players.filter(player => player.playing);
+
+    if (playingMedia.length > 0) {
+      return;
+    }
 
     if (!this.state.swipedRight && this.state.translateValue < items.length-1) {
       document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${translateValue}00%)`;
@@ -40,9 +46,15 @@ class MediaDisplay extends Component {
       currentId
     } = this.state;
 
+    const playingMedia = window.players.filter(player => player.playing);
+
+    if (playingMedia.length > 0) {
+      return;
+    }
+
     if (this.state.translateValue === 1) {
       this.setState({ swipedRight: false });
-      return document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(0)`
+      return document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(0)`;
     }
 
     if (this.state.swipedRight) {
@@ -71,28 +83,22 @@ class MediaDisplay extends Component {
 
   componentDidMount() {
     const {
-      items, 
-      videoGifPhotoViewVisibility 
+      items 
     } = this.props;
-    console.log(videoGifPhotoViewVisibility)
     this.setState({ 
       currentId: items[0].props.id,
       translateValue: 1,
       swipedRight: false 
+    }, () => {
+      window.addEventListener('keydown', this.initControls, true);
     })
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.videoGifPhotoViewVisibility === `none`) {
-      const { currentId } = this.state;
-      window.removeEventListener('keydown', this.initControls, true);
-      document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(0)`;
-      this.reset();
-    }
-
-    if (nextProps.videoGifPhotoViewVisibility !== `none`) {
-      window.addEventListener('keydown', this.initControls, true);
-    }
+  componentWillUnmount() {
+    const { currentId } = this.state;
+    window.removeEventListener('keydown', this.initControls, true);
+    document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(0)`;
+    this.reset();
   }
 
   reset = () => {
