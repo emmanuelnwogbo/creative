@@ -14,7 +14,6 @@ class Video extends Component {
     let player = new Plyr(`#${id}`);
     player.Creative__UuuuId = id;
     window.players = [...window.players, player];
-    console.log(window.players);
   }
 
 

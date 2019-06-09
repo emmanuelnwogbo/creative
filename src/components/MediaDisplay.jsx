@@ -28,6 +28,15 @@ class MediaDisplay extends Component {
 
     if (!this.state.swipedRight && this.state.translateValue < items.length-1) {
       document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${translateValue}00%)`;
+      Array.from(document.getElementsByClassName('mediadisplay__swipe__wrap--item')).forEach(item => {
+        if (item.dataset.positioninslide !== '1') {
+          item.firstChild.style.display = `none`;
+        }
+
+        if (item.dataset.positioninslide === '1') {
+          item.firstChild.style.display = `block`;
+        }
+      })
       return this.setState({ swipedRight: true });
     }
 
@@ -36,24 +45,38 @@ class MediaDisplay extends Component {
         translateValue: prevState.translateValue+=1
       }), () => {
         const { translateValue } = this.state;
+        Array.from(document.getElementsByClassName('mediadisplay__swipe__wrap--item')).forEach(item => {
+          if (item.dataset.positioninslide !== `${translateValue}`) {
+            item.firstChild.style.display = `none`;
+          }
+
+          if (item.dataset.positioninslide === `${translateValue}`) {
+            item.firstChild.style.display = `block`
+          }
+        })
         document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${translateValue}00%)`
       })
     }
   }
 
   swipeLeft = () => {
-    const {
-      currentId
-    } = this.state;
-
     const playingMedia = window.players.filter(player => player.playing);
-
     if (playingMedia.length > 0) {
       return;
     }
 
     if (this.state.translateValue === 1) {
+      const { currentId } = this.state;
       this.setState({ swipedRight: false });
+      Array.from(document.getElementsByClassName('mediadisplay__swipe__wrap--item')).forEach(item => {
+        if (item.dataset.positioninslide !== `0`) {
+          item.firstChild.style.display = `none`
+        }
+
+        if (item.dataset.positioninslide === `0`) {
+          item.firstChild.style.display = `block`
+        }
+      })
       return document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(0)`;
     }
 
@@ -64,7 +87,16 @@ class MediaDisplay extends Component {
         }
       }, () => {
         const { currentId, translateValue } = this.state;
-        document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${translateValue}00%)`
+        Array.from(document.getElementsByClassName('mediadisplay__swipe__wrap--item')).forEach(item => {
+          if (item.dataset.positioninslide !== `${translateValue}`) {
+            item.firstChild.style.display = `none`
+          }
+
+          if (item.dataset.positioninslide === `${translateValue}`) {
+            item.firstChild.style.display = `block`
+          }
+        })
+        document.getElementById(`mediadisplay-${currentId}`).parentElement.style.transform = `translateX(-${translateValue}00%)`;
       })
     }
   }
@@ -85,6 +117,7 @@ class MediaDisplay extends Component {
     const {
       items 
     } = this.props;
+    console.log(items)
     this.setState({ 
       currentId: items[0].props.id,
       translateValue: 1,
@@ -110,11 +143,14 @@ class MediaDisplay extends Component {
 
   renderItems = () => {
     const { items } = this.props;
-    if (items) {
+    if (items && this.state.translateValue) {
+      let num = 0;
       return items.map(item => {
+        num+=1;
         return (
           <div 
-          className={'mediadisplay__swipe__wrap--item'}
+          className={`mediadisplay__swipe__wrap--item`}
+          data-positioninslide={`${num-1}`}
           id={`mediadisplay-${item.props.id}`}
           key={item.props.id}>{item}</div>
         )
