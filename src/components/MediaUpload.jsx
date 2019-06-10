@@ -6,8 +6,7 @@ class MediaUpload extends Component {
     super(props);
     this.state = {
       files: [],
-      previewMedia: [],
-      test: 0
+      previewMedia: []
     }
   }
 
@@ -26,17 +25,13 @@ class MediaUpload extends Component {
 
   handlePreview = (file) => {
     const reader = new FileReader();
-    let preview;
     reader.readAsDataURL(file);
-    reader.onloadend = event => {
-      if (event.type === "loadend") {
-        preview = reader.result;
-        this.setState(prevState => {
-          return {
-            previewMedia: [...prevState.previewMedia, preview]
-          }
-        })
-      }
+    reader.onloadend = () => {
+      this.setState(prevState => {
+        return {
+          previewMedia: [...prevState.previewMedia, reader.result]
+        }
+      })
     }
   }
 
@@ -46,31 +41,27 @@ class MediaUpload extends Component {
     this.removeDragOvFeedback(event);
     if (event.dataTransfer.files) {
       const fileArr = event.dataTransfer.files;
-      return this.setState(prevState => {
-        return {
-          files: [...prevState.files, ...fileArr]
-        }
-      }, () => {
-        const { files } = this.state;
-        files.forEach(file => {
-          this.handlePreview(file);
-        });
-      });
+      fileArr.forEach(file => {
+        this.handlePreview(file)
+        this.setState(prevState => {
+          return {
+            files: [...prevState.files, file]
+          }
+        })
+      })
     }
   }
 
   handleFiles = () => {
     const fileArr = this._input.files;
-    return this.setState(prevState => {
-      return {
-        files: [...prevState.files, ...fileArr]
-      }
-    }, () => {
-      const { files } = this.state;
-      files.forEach(file => {
-        //this.handlePreview(file);
-      });
-    });
+    fileArr.forEach(file => {
+      this.handlePreview(file)
+      this.setState(prevState => {
+        return {
+          files: [...prevState.files, file]
+        }
+      })
+    })
   }
 
   sendDragOvFeedback = (event) => {

@@ -10,6 +10,11 @@
   transition: all .1s ease-in-out;
   cursor: pointer;
   border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 
   &__h3 {
     margin: 0 auto;
@@ -21,6 +26,7 @@
   &__content {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     & figure {
       flex-shrink: 0;
