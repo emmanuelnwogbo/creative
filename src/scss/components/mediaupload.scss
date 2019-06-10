@@ -1,0 +1,40 @@
+.mediaupload {
+  width: 100%;
+  //dev styles 
+  width: 60%;
+  margin: 4rem auto;
+  //end of dev styles
+  padding: 3rem;
+  border-radius: .3rem;
+  background: #fff;
+  transition: all .1s ease-in-out;
+  cursor: pointer;
+  border: none;
+
+  &__h3 {
+    margin: 0 auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+
+    & figure {
+      flex-shrink: 0;
+      width: 15rem;
+      height: 15rem;
+      overflow: hidden;
+      margin: .5rem;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;  
+    }
+  }
+}

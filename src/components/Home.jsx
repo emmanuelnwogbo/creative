@@ -9,6 +9,7 @@ const ProfileView = lazy(() => import('./ProfileView'));
 const JobView = lazy(() => import('./JobView'));
 const Profile = lazy(() => import('./Profile'));
 const Job = lazy(() => import('./Job'))
+import MediaUpload from './MediaUpload';
 
 //import FormField, CommentField components for development purposes
 import FormField from './FormField';
@@ -92,6 +93,10 @@ class Home extends Component {
         toggleProfileViewVisibility={toggleProfileViewVisibility}
         toggleJobViewVisibility={toggleJobViewVisibility}
         />
+        <div>
+          <p>dev environ for media upload and preview component</p>
+          <MediaUpload />
+        </div>
         <form>
           <FormField type="text" name="Firstname" placeholder={'Firstname'}/>
           <FormField type="email" name="Email" placeholder={'Put your email here'}/>
