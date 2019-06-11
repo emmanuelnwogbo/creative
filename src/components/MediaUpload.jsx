@@ -1,4 +1,5 @@
 import React, { Component, lazy, Suspense } from 'react';
+import axios from 'axios';
 import '../scss/components/mediaupload.scss';
 
 class MediaUpload extends Component {
@@ -6,8 +7,27 @@ class MediaUpload extends Component {
     super(props);
     this.state = {
       files: [],
-      previewMedia: []
+      previewMedia: [],
+      uploaded: [],
+      deletedMedia: [],
+      url: 'https://api.cloudinary.com/v1_1/dxlhzerlq/upload',
+      data: new FormData()
     }
+  }
+
+  removePhoto = (event) => {
+    console.log(event.target.parentNode.parentNode);
+    const parentOfPhoto = event.target.parentNode.parentNode.parentNode;
+    const photo = event.target.parentNode.parentNode;
+    const deletedId = photo.id;
+    console.log(event.target.parentNode.parentNode.id);
+    this.setState(prevState => {
+      return {
+        deletedMedia: [...prevState.deletedMedia, deletedId]
+      }
+    }, () => {
+      parentOfPhoto.removeChild(photo);
+    })
   }
 
   renderMediaPreview = () => {
@@ -16,20 +36,99 @@ class MediaUpload extends Component {
     return previewMedia.map(media => {
       keyGen+=1;
       return (
-        <figure key={keyGen}>
-          <img src={`${media}`}/>
+        <figure key={keyGen} id={`${media.id}`}>
+          <span className={`mediaupload__content__notuploaded`}></span>
+          <span className={`mediaupload__content__uploadedindicator--1`}></span>
+          <span className={`mediaupload__content__uploadedindicator--2`}></span>
+          <span className={`mediaupload__content__uploadedindicator--3`}></span>
+          <span className={`mediaupload__content__uploadedindicator--4`}></span>
+          <img src={`${media.src}`}/>
+          <div className={`mediaupload__content__exbtn`} onClick={this.removePhoto}>
+            <span></span>
+            <svg>
+              <use xlinkHref="./img/sprite.svg#icon-cross" />
+            </svg>
+          </div>
         </figure>
       )
     })
+  }
+
+  handleUpload = (file) => {
+    const { url, data } = this.state;
+    const config = {
+      headers: { 
+        "X-Requested-With": "XMLHttpRequest" 
+      },
+      onUploadProgress: event => {
+        let progress = Math.round((event.loaded * 100.0) / event.total);
+        if (document.getElementById(`${file.id}`) !== null) {
+          Array.from(document.getElementById(`${file.id}`).children)[0]
+          .style.height = `${100 - progress}%`;
+
+          if (progress >= 25) {
+            Array.from(document.getElementById(`${file.id}`).children)[2]
+            .style.height = `100%`;
+          }
+  
+          if (progress >= 50) {
+            Array.from(document.getElementById(`${file.id}`).children)[4]
+            .style.width = `100%`;
+          }
+  
+          if (progress >= 75) {
+            Array.from(document.getElementById(`${file.id}`).children)[1]
+            .style.height = `100%`;
+          }
+  
+          if (progress === 100) {
+            Array.from(document.getElementById(`${file.id}`).children)[3]
+            .style.width = `100%`;
+          }
+        }
+      }
+    }
+    data.append('file', file);
+    try {
+      axios.post(url, data, config).then(res => {
+        if (res.data) {
+          //console.log(res.data);
+          const uploaded = {
+            id: file.id,
+            data: res.data
+          }
+          this.setState(prevState => {
+            return {
+              uploaded: [...prevState.uploaded, uploaded]
+            }
+          })
+        }
+      })
+    }
+    catch(error) {
+      console.log('there is an error yo')
+    }
   }
 
   handlePreview = (file) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
+      const createFileId = ( length ) => {
+        let str = "";
+        for ( ; str.length < length; str += Math.random().toString( 36 ).substr( 2 ));
+          return str.substr( 0, length );
+      }
+      file.id = createFileId((Math.round(file.lastModified * 100)/file.lastModified));
+      const previewObj = {
+        src: reader.result,
+        id: file.id
+      }
+      //console.log(previewObj)
+      this.handleUpload(file)
       this.setState(prevState => {
         return {
-          previewMedia: [...prevState.previewMedia, reader.result]
+          previewMedia: [...prevState.previewMedia, previewObj]
         }
       })
     }
@@ -41,8 +140,8 @@ class MediaUpload extends Component {
     this.removeDragOvFeedback(event);
     if (event.dataTransfer.files) {
       const fileArr = event.dataTransfer.files;
-      fileArr.forEach(file => {
-        this.handlePreview(file)
+      Array.from(fileArr).forEach(file => {
+        this.handlePreview(file);
         this.setState(prevState => {
           return {
             files: [...prevState.files, file]
@@ -54,7 +153,7 @@ class MediaUpload extends Component {
 
   handleFiles = () => {
     const fileArr = this._input.files;
-    fileArr.forEach(file => {
+    Array.from(fileArr).forEach(file => {
       this.handlePreview(file)
       this.setState(prevState => {
         return {
@@ -76,10 +175,15 @@ class MediaUpload extends Component {
   removeDragOvFeedback = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    this._droparea.style.background = '#fff';
+    this._droparea.style.background = '#F0F3F4';
     this._droparea.style.borderRadius = '.3rem';
     this._droparea.style.border = 'none';
     this._droparea.style.boxShadow = 'none';
+  }
+
+  componentDidMount() {
+    const { data } = this.state;
+    data.append("upload_preset", "acjlrvii");
   }
 
   render() {
@@ -89,13 +193,18 @@ class MediaUpload extends Component {
         className={`mediaupload`}
         ref={c => (this._droparea = c)} 
         onDragOver={this.sendDragOvFeedback}
+        onDragEnter={this.sendDragOvFeedback}
         onDragLeave={this.removeDragOvFeedback}
         onDrop={this.handleFilesDrop}>
         <h3 className={`mediaupload__h3`}>{files.length} files chosen</h3>
         <input type="file" id="mediaupload" 
         multiple accept="image/*" 
         ref={c => (this._input = c)}
-        onChange={this.handleFiles}/>
+        onChange={this.handleFiles}
+        style={{
+          display: `none`
+        }}/>
+        <label for="mediaupload" className={`mediaupload__label`}></label>
         <div className={`mediaupload__content`}>
           {this.renderMediaPreview()}
         </div>

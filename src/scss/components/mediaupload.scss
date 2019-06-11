@@ -1,12 +1,13 @@
 .mediaupload {
   width: 100%;
   //dev styles 
+  position: relative;
   width: 60%;
   margin: 4rem auto;
   //end of dev styles
   padding: 3rem;
   border-radius: .3rem;
-  background: #fff;
+  background: #F0F3F4;
   transition: all .1s ease-in-out;
   cursor: pointer;
   border: none;
@@ -14,6 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-weight: 900;
 
 
   &__h3 {
@@ -24,16 +26,83 @@
   }
 
   &__content {
-    display: flex;
-    flex-wrap: wrap;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 20rem));
+    grid-gap: 1rem;
+    align-items: start;
+    margin-top: 2rem;
+    z-index: 11;
     justify-content: center;
 
+    &__notuploaded {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(252, 66, 123,.6);
+      transition: all .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    &__uploadedindicator {
+      &--1 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: .2rem;
+        background: #EC008C;
+        height: 0;
+        border-radius: .3rem;
+      }
+
+      &--2 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: .2rem;
+        background: #EC008C;
+        height: 0;
+        border-radius: .3rem;
+      }
+
+      &--3 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        background: #EC008C;
+        height: .2rem;
+        border-radius: .3rem;        
+      }
+
+      &--4 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        background: #EC008C;
+        height: .2rem;
+        border-radius: .3rem;              
+      }
+    }
+
     & figure {
-      flex-shrink: 0;
-      width: 15rem;
-      height: 15rem;
+      position: relative;
       overflow: hidden;
-      margin: .5rem;
+      height: 20rem;
+      border-radius: .3rem;
+      transition: all .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+      & span {
+        transition: all .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      &:hover > .mediaupload__content__exbtn {
+        opacity: 1;
+      }
     }
 
     & img {
@@ -42,5 +111,48 @@
       object-fit: cover;
       display: block;  
     }
+
+    &__exbtn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 50%;
+      height: 4rem;
+      width: 4rem;
+      cursor: pointer;
+      z-index: 4;
+      background: rgba(232, 67, 147,.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      opacity: 0;
+
+      & svg {
+        height: 3rem;
+        width: 3rem;
+        fill: #fff;
+      }
+
+      & span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 4;
+        background: rgba(232, 67, 147,.7);
+      }
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    cursor: pointer;
   }
 }
