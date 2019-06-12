@@ -95,7 +95,10 @@ class CommentField extends Component {
           </div>
           {this.renderIfIncludesMedia(media)}
           {this.renderSocialIcons(include_socialIcons)}
-          <div className={`comment__field__like`}><span><p>Like</p></span></div>
+          <div className={`comment__field__like`}>
+            <span><p>Like</p></span>
+            <span><p>Reply</p></span>
+          </div>
         </div>
         <div className={`comment__field__crumbs`}>
           <span></span>

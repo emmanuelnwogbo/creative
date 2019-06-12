@@ -93,10 +93,7 @@ class Home extends Component {
         toggleProfileViewVisibility={toggleProfileViewVisibility}
         toggleJobViewVisibility={toggleJobViewVisibility}
         />
-        <div>
-          <p>dev environ for media upload and preview component</p>
-          <MediaUpload />
-        </div>
+        <MediaUpload />
         <form>
           <FormField type="text" name="Firstname" placeholder={'Firstname'}/>
           <FormField type="email" name="Email" placeholder={'Put your email here'}/>

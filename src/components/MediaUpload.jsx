@@ -16,11 +16,9 @@ class MediaUpload extends Component {
   }
 
   removePhoto = (event) => {
-    console.log(event.target.parentNode.parentNode);
     const parentOfPhoto = event.target.parentNode.parentNode.parentNode;
     const photo = event.target.parentNode.parentNode;
     const deletedId = photo.id;
-    console.log(event.target.parentNode.parentNode.id);
     this.setState(prevState => {
       return {
         deletedMedia: [...prevState.deletedMedia, deletedId]
@@ -28,6 +26,17 @@ class MediaUpload extends Component {
     }, () => {
       parentOfPhoto.removeChild(photo);
     })
+  }
+
+  returnMediaTag = (type, src) => {
+    const v = /video/
+    if (v.exec(type) === null) {
+      return <img src={`${src}`}/>
+    }
+
+    return (
+      <video src={`${src}`}></video>
+    )
   }
 
   renderMediaPreview = () => {
@@ -42,11 +51,16 @@ class MediaUpload extends Component {
           <span className={`mediaupload__content__uploadedindicator--2`}></span>
           <span className={`mediaupload__content__uploadedindicator--3`}></span>
           <span className={`mediaupload__content__uploadedindicator--4`}></span>
-          <img src={`${media.src}`}/>
+          {this.returnMediaTag(media.filetype, media.src)}
           <div className={`mediaupload__content__exbtn`} onClick={this.removePhoto}>
             <span></span>
             <svg>
               <use xlinkHref="./img/sprite.svg#icon-cross" />
+            </svg>
+          </div>
+          <div className={`mediaupload__indicator`}>
+            <svg>
+              <use xlinkHref="./img/sprite.svg#icon-spinner2" />
             </svg>
           </div>
         </figure>
@@ -101,6 +115,11 @@ class MediaUpload extends Component {
             return {
               uploaded: [...prevState.uploaded, uploaded]
             }
+          }, () => {
+            if (document.getElementById(file.id) !== null) {
+              Array.from(document.getElementById(file.id).children)[7]
+              .style.display = `none`;
+            }
           })
         }
       })
@@ -122,9 +141,9 @@ class MediaUpload extends Component {
       file.id = createFileId((Math.round(file.lastModified * 100)/file.lastModified));
       const previewObj = {
         src: reader.result,
-        id: file.id
+        id: file.id,
+        filetype: file.type
       }
-      //console.log(previewObj)
       this.handleUpload(file)
       this.setState(prevState => {
         return {
@@ -154,6 +173,7 @@ class MediaUpload extends Component {
   handleFiles = () => {
     const fileArr = this._input.files;
     Array.from(fileArr).forEach(file => {
+      //console.log(file)
       this.handlePreview(file)
       this.setState(prevState => {
         return {
@@ -187,7 +207,7 @@ class MediaUpload extends Component {
   }
 
   render() {
-    const { files } = this.state;
+    const { files, deletedMedia } = this.state;
     return (
       <div 
         className={`mediaupload`}
@@ -196,15 +216,15 @@ class MediaUpload extends Component {
         onDragEnter={this.sendDragOvFeedback}
         onDragLeave={this.removeDragOvFeedback}
         onDrop={this.handleFilesDrop}>
-        <h3 className={`mediaupload__h3`}>{files.length} files chosen</h3>
+        <h3 className={`mediaupload__h3`}>{files.length - deletedMedia.length} files chosen</h3>
         <input type="file" id="mediaupload" 
-        multiple accept="image/*" 
+        multiple accept="video/*,  video/x-m4v, video/webm, video/x-ms-wmv, video/x-msvideo, video/3gpp, video/flv, video/x-flv, video/mp4, video/quicktime, video/mpeg, video/ogv, .ts, .mkv, image/*, image/heic, image/heif" 
         ref={c => (this._input = c)}
         onChange={this.handleFiles}
         style={{
           display: `none`
         }}/>
-        <label for="mediaupload" className={`mediaupload__label`}></label>
+        <label htmlFor="mediaupload" className={`mediaupload__label`}></label>
         <div className={`mediaupload__content`}>
           {this.renderMediaPreview()}
         </div>
