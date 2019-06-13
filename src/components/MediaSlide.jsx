@@ -1,7 +1,8 @@
 import React, { Component, lazy, Suspense } from 'react';
 import '../scss/components/mediaslide.scss';
 
-const PhotoDisplay = lazy(() => import('./PhotoDisplay'))
+const PhotoDisplay = lazy(() => import('./PhotoDisplay'));
+const VideoDisplay = lazy(() => import('./VideoDisplay'))
 
 class MediaSlide extends Component {
   constructor(props) {
@@ -15,28 +16,38 @@ class MediaSlide extends Component {
 
   renderMedia = () => {
     const { assets, currentItem } = this.state;
+    const v = /video/
     return assets.map(asset => {
       if (assets.indexOf(asset) === currentItem && 
-      typeof asset === 'string') {
+      v.exec(asset.filetype) !== null) {
         return (
-          <Suspense key={asset} fallback={<div>loading</div>}>
-            <PhotoDisplay 
-            key={asset} 
-            src={asset} 
-            swipeDirection={this.state.swipeDirection}/>
+          <Suspense key={asset.src} fallback={<div>loading</div>}>
+            <VideoDisplay key={asset.src} id={asset.src}/>
           </Suspense>
         )
       }
 
-      if (assets.indexOf(asset) === currentItem && 
-      typeof asset === 'object') {
-        return asset;
+      if (assets.indexOf(asset) === currentItem) {
+        return (
+          <Suspense key={asset.src} fallback={<div>loading</div>}>
+            <PhotoDisplay 
+            key={asset.src} 
+            src={asset.src} 
+            swipeDirection={this.state.swipeDirection}/>
+          </Suspense>
+        )
       }
     })
   }
 
   swipeRight = () => {
     const { assets, currentItem } = this.state;
+    if (window.player !== undefined && window.player !== null) {
+      if (window.player.playing || window.player.fullscreen.active) {
+        return;
+      }
+    }
+
     if (currentItem === assets.length-1) {
       return;
     }
@@ -50,6 +61,12 @@ class MediaSlide extends Component {
 
   swipeLeft = () => {
     const { currentItem } = this.state;
+    if (window.player !== undefined && window.player !== null) {
+      if (window.player.playing || window.player.fullscreen.active) {
+        return;
+      }
+    }
+
     if (currentItem === 0) {
       return;
     }
@@ -75,10 +92,10 @@ class MediaSlide extends Component {
 
   componentDidMount() {
     const { assets } = this.props;
-    console.log(assets)
-    assets.forEach(asset => {
+    //console.log(assets)
+    /*assets.forEach(asset => {
       console.log(typeof asset)
-    })
+    })*/
     const setOfUniqueItems = new Set(assets);
     setOfUniqueItems.forEach(currentVal => {
       this.setState(prevState => {

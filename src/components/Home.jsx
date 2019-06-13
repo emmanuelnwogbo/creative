@@ -98,13 +98,22 @@ class Home extends Component {
         <MediaUpload />
         <MediaSlide 
         assets={[
-          './img/br.gif', 
-          './img/download2.jpg',
-          './img/project.jpg',
-          <Suspense fallback={<div>loading</div>} 
-            key={`https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4`}>
-            <VideoDisplay />
-          </Suspense>
+          {
+            src: './img/br.gif',
+            filetype: 'image'
+          },
+          {
+            src: './img/download2.jpg',
+            filetype: 'image'
+          },
+          {
+            src: './img/project.jpg',
+            filetype: 'image'
+          },
+          {
+            src: "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4",
+            filetype: "video/mp4"
+          }
         ]}/>
         <form>
           <FormField type="text" name="Firstname" placeholder={'Firstname'}/>
