@@ -10,6 +10,8 @@ const JobView = lazy(() => import('./JobView'));
 const Profile = lazy(() => import('./Profile'));
 const Job = lazy(() => import('./Job'))
 import MediaUpload from './MediaUpload';
+import MediaSlide from './MediaSlide';
+const VideoDisplay = lazy(() => import('./VideoDisplay'))
 
 //import FormField, CommentField components for development purposes
 import FormField from './FormField';
@@ -94,6 +96,16 @@ class Home extends Component {
         toggleJobViewVisibility={toggleJobViewVisibility}
         />
         <MediaUpload />
+        <MediaSlide 
+        assets={[
+          './img/br.gif', 
+          './img/download2.jpg',
+          './img/project.jpg',
+          <Suspense fallback={<div>loading</div>} 
+            key={`https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4`}>
+            <VideoDisplay />
+          </Suspense>
+        ]}/>
         <form>
           <FormField type="text" name="Firstname" placeholder={'Firstname'}/>
           <FormField type="email" name="Email" placeholder={'Put your email here'}/>
