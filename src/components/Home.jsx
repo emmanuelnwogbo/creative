@@ -11,7 +11,6 @@ const Profile = lazy(() => import('./Profile'));
 const Job = lazy(() => import('./Job'))
 import MediaUpload from './MediaUpload';
 import MediaSlide from './MediaSlide';
-const VideoDisplay = lazy(() => import('./VideoDisplay'))
 
 //import FormField, CommentField components for development purposes
 import FormField from './FormField';

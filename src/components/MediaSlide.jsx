@@ -1,4 +1,5 @@
 import React, { Component, lazy, Suspense } from 'react';
+import Hammer from 'hammerjs';
 import '../scss/components/mediaslide.scss';
 
 const PhotoDisplay = lazy(() => import('./PhotoDisplay'));
@@ -107,6 +108,25 @@ class MediaSlide extends Component {
       })
     });
 
+    if (window.matchMedia("screen and (max-width: 1024px)").matches) {
+        const mediaSlide = document.querySelector('.mediaslide');
+        const manager = new Hammer.Manager(mediaSlide);
+        const Swipe = new Hammer.Swipe();
+        let range = 0;
+        manager.add(Swipe)
+        manager.on('swipe', (e) => {
+        var direction = e.offsetDirection;
+        if (direction === 4 || direction === 2) {
+          if (e.deltaX > range) {
+            this.swipeLeft()
+          }
+
+          if (e.deltaX < range) {
+            this.swipeRight();
+          }
+        }
+      });
+    }
     window.addEventListener('keydown', this.initControls, true);
   }
 

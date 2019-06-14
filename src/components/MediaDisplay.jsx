@@ -1,4 +1,5 @@
 import React, { Component, lazy, Suspense } from 'react';
+import Hammer from 'hammerjs';
 
 import '../scss/components/mediadisplay.scss'
 
@@ -21,8 +22,9 @@ class MediaDisplay extends Component {
 
     const { items } = this.props;
     const playingMedia = window.players.filter(player => player.playing);
+    const fullscreenMedia = window.players.filter(player => player.fullscreen.active);
 
-    if (playingMedia.length > 0) {
+    if (playingMedia.length > 0 || fullscreenMedia.length > 0) {
       return;
     }
 
@@ -61,7 +63,9 @@ class MediaDisplay extends Component {
 
   swipeLeft = () => {
     const playingMedia = window.players.filter(player => player.playing);
-    if (playingMedia.length > 0) {
+    const fullscreenMedia = window.players.filter(player => player.fullscreen.active);
+
+    if (playingMedia.length > 0 || fullscreenMedia.length > 0) {
       return;
     }
 
@@ -125,6 +129,26 @@ class MediaDisplay extends Component {
     }, () => {
       window.addEventListener('keydown', this.initControls, true);
     })
+
+    if (window.matchMedia("screen and (max-width: 1024px)").matches) {
+      const mediaDisplay = document.querySelector('.mediadisplay');
+      const manager = new Hammer.Manager(mediaDisplay);
+      const Swipe = new Hammer.Swipe();
+      let range = 0;
+      manager.add(Swipe)
+      manager.on('swipe', (e) => {
+      let direction = e.offsetDirection;
+      if (direction === 4 || direction === 2) {
+        if (e.deltaX > range) {
+          this.swipeLeft()
+        }
+
+        if (e.deltaX < range) {
+          this.swipeRight();
+        }
+      }
+    });
+  }    
   }
 
   componentWillUnmount() {
